@@ -43,12 +43,10 @@ namespace Krypton_Tool
             formMoving = true;
             startPoint = new Point(e.X, e.Y);
         }
-
         private void NotePadPage_MouseUp(object sender, MouseEventArgs e)
         {
             formMoving = false;
         }
-
         private void NotePadPage_MouseMove(object sender, MouseEventArgs e)
         {
             if (formMoving)
@@ -57,23 +55,18 @@ namespace Krypton_Tool
                 Location = new Point(p.X - this.startPoint.X, p.Y - this.startPoint.Y);
             }
         }
-
         private void rjBtnClose_MouseEnter(object sender, EventArgs e)
         {
             rjBtnClose.Image = Properties.Resources.closewhite;
         }
-
         private void rjBtnClose_MouseLeave(object sender, EventArgs e)
         {
             rjBtnClose.Image = Properties.Resources.closedark;
         }
-
         private void rjBtnClose_Click(object sender, EventArgs e)
         {
-
             Application.Exit();
         }
-
         private void NotePadPage_FormClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             // Determine if text has changed in the textbox by comparing to original text.
@@ -112,9 +105,6 @@ namespace Krypton_Tool
                 this.WindowState = FormWindowState.Normal;
                 Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
             }
-
-            
-
         }
 
         private void rjBtnHide_Click(object sender, EventArgs e)
