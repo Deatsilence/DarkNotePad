@@ -32,6 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Krypton_Tool.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>darknotepadimage.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Docking">
       <HintPath>..\..\..\..\Desktop\Conpanents\Krypton-master\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
@@ -64,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
     <Compile Include="DarkNotePad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +84,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DarkNotePad.resx">
       <DependentUpon>DarkNotePad.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\darknotepadimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\darknotepadimage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="darknotepadimage.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
