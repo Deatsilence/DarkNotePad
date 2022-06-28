@@ -218,9 +218,9 @@ namespace Krypton_Tool
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.rjBtnClose_Click);
             // 
             // EditToolStripMenuItem
             // 
@@ -359,6 +359,7 @@ namespace Krypton_Tool
             this.Controls.Add(this.rjBtnClose);
             this.Controls.Add(this.menuStripNotePad);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripNotePad;
             this.Name = "NotePadPage";
             this.Palette = this.kryptonPalette1;

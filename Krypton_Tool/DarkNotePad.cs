@@ -41,7 +41,7 @@ namespace Krypton_Tool
             return false;
         }
 
-     
+
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -177,6 +177,8 @@ namespace Krypton_Tool
                         try
                         {
                             path = sfd.FileName;
+                            FileInfo fi = new FileInfo(sfd.FileName);
+                            lblTittle.Text = fi.Name + " - DarkNotePad";
                             using (StreamWriter sw = new StreamWriter(sfd.FileName))
                             {
                                 await sw.WriteAsync(txtBoxKryptonText.Text);
@@ -185,7 +187,6 @@ namespace Krypton_Tool
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                         }
                     }
                 }
@@ -225,11 +226,6 @@ namespace Krypton_Tool
                     }
                 }
             }
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
