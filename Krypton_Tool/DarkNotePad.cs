@@ -25,6 +25,9 @@ namespace Krypton_Tool
         DialogResult result;
         // About
         string path;
+        // Undo
+        Stack<string> _editingHistory = new Stack<string>(); // The history of the contents of the TextBox.
+        Stack<string> _undoHistory = new Stack<string>(); // The history of TextBox contents that have been undone and can be redone.
 
         // Constructor
         public NotePadPage()
@@ -32,17 +35,58 @@ namespace Krypton_Tool
             InitializeComponent();
             strMyOriginalText = txtBoxKryptonText.Text;
             menuStripNotePad.Renderer = new MyRenderer();
+            _editingHistory.Push(txtBoxKryptonText.Text);
         }
 
+        
+
+        void RecordEdit()
+        {
+            _editingHistory.Push(txtBoxKryptonText.Text);
+            menuStripNotePad.Items[0].Enabled = true;
+            _undoHistory.Clear();
+            menuStripNotePad.Items[0].Enabled = false;
+        }
+
+        void DoEdit(KryptonRichTextBox editor, bool isDeletion, int loc, string text)
+        {
+            if (isDeletion)
+            {
+               
+            }
+        }
+
+        string GetEditString(string content, string lastContent, bool isDeletion, int editLocation, int len)
+        {
+            if (isDeletion)
+                return lastContent.Substring(editLocation, len);
+            else
+                return content.Substring(editLocation, len);
+        }
+
+        int GetEditLocation(KryptonRichTextBox editor, bool isDeletion, int len)
+        {
+            if (isDeletion)
+                return editor.SelectionStart;
+            return editor.SelectionStart - len;
+        }
+
+        int GetEditLength(KryptonRichTextBox editor, string lastContent)
+        {
+            return Math.Abs(editor.MaxLength - lastContent.Length);
+        }
+
+        bool IsDeletion(KryptonRichTextBox editor, string lastContent)
+        {
+            return editor.TextLength < lastContent.Length;
+        }
+        
         bool IsSave()
         {
             if (strMyOriginalText != txtBoxKryptonText.Text)
                 return true;
             return false;
         }
-
-
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -271,6 +315,22 @@ namespace Krypton_Tool
                 get { return Color.FromArgb(31, 31, 46); }
             }
 
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _editingHistory.Push(_undoHistory.Pop());
+            menuStripNotePad.Items[0].Enabled = _undoHistory.Count > 0;
+            txtBoxKryptonText.Text = _editingHistory.Peek();
+            menuStripNotePad.Items[0].Enabled = true;
+        }
+
+        private void txtBoxKryptonText_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBoxKryptonText.Modified)
+                RecordEdit();
+                
+            
         }
     }
 }
