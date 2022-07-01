@@ -27,6 +27,9 @@ namespace Krypton_Tool
         string path;
         // Modified
         bool isChanged = true;
+        // Default zoom
+        float defaultZoom;
+
 
         // Constructor
         public NotePadPage()
@@ -58,6 +61,7 @@ namespace Krypton_Tool
             txtBoxKryptonText.StateCommon.Border.Color1 = Color.FromArgb(52, 56, 55);
             txtBoxKryptonText.StateCommon.Content.Color1 = Color.FromArgb(250, 252, 252);
             txtBoxKryptonText.Text = string.Empty;
+            defaultZoom = txtBoxKryptonText.ZoomFactor;
 
             // MenuStripItems
             cutToolStripMenuItem.Enabled = false;
@@ -354,14 +358,13 @@ namespace Krypton_Tool
                 {
                     txtBoxKryptonText.SelectAll();
                     txtBoxKryptonText.SelectionFont = font.Font;
-
                 }
             }
         }
 
-        private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
+        private void restoreDefaultZoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            txtBoxKryptonText.ZoomFactor = 2.0F;
+            txtBoxKryptonText.ZoomFactor = 1F; // don't working
         }
     }
 }
