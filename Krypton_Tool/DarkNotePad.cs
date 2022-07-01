@@ -25,9 +25,8 @@ namespace Krypton_Tool
         DialogResult result;
         // About
         string path;
-        // Undo
-        Stack<string> _editingHistory = new Stack<string>(); // The history of the contents of the TextBox.
-        Stack<string> _undoHistory = new Stack<string>(); // The history of TextBox contents that have been undone and can be redone.
+        // Modified
+        bool isChanged = true;
 
         // Constructor
         public NotePadPage()
@@ -35,52 +34,9 @@ namespace Krypton_Tool
             InitializeComponent();
             strMyOriginalText = txtBoxKryptonText.Text;
             menuStripNotePad.Renderer = new MyRenderer();
-            _editingHistory.Push(txtBoxKryptonText.Text);
+
         }
 
-        
-
-        void RecordEdit()
-        {
-            _editingHistory.Push(txtBoxKryptonText.Text);
-            menuStripNotePad.Items[0].Enabled = true;
-            _undoHistory.Clear();
-            menuStripNotePad.Items[0].Enabled = false;
-        }
-
-        void DoEdit(KryptonRichTextBox editor, bool isDeletion, int loc, string text)
-        {
-            if (isDeletion)
-            {
-               
-            }
-        }
-
-        string GetEditString(string content, string lastContent, bool isDeletion, int editLocation, int len)
-        {
-            if (isDeletion)
-                return lastContent.Substring(editLocation, len);
-            else
-                return content.Substring(editLocation, len);
-        }
-
-        int GetEditLocation(KryptonRichTextBox editor, bool isDeletion, int len)
-        {
-            if (isDeletion)
-                return editor.SelectionStart;
-            return editor.SelectionStart - len;
-        }
-
-        int GetEditLength(KryptonRichTextBox editor, string lastContent)
-        {
-            return Math.Abs(editor.MaxLength - lastContent.Length);
-        }
-
-        bool IsDeletion(KryptonRichTextBox editor, string lastContent)
-        {
-            return editor.TextLength < lastContent.Length;
-        }
-        
         bool IsSave()
         {
             if (strMyOriginalText != txtBoxKryptonText.Text)
@@ -102,6 +58,9 @@ namespace Krypton_Tool
             txtBoxKryptonText.StateCommon.Border.Color1 = Color.FromArgb(52, 56, 55);
             txtBoxKryptonText.StateCommon.Content.Color1 = Color.FromArgb(250, 252, 252);
             txtBoxKryptonText.Text = string.Empty;
+
+            // MenuStripItems
+            cutToolStripMenuItem.Enabled = false;
         }
         private void NotePadPage_MouseDown(object sender, MouseEventArgs e)
         {
@@ -319,18 +278,90 @@ namespace Krypton_Tool
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _editingHistory.Push(_undoHistory.Pop());
-            menuStripNotePad.Items[0].Enabled = _undoHistory.Count > 0;
-            txtBoxKryptonText.Text = _editingHistory.Peek();
-            menuStripNotePad.Items[0].Enabled = true;
+            txtBoxKryptonText.Undo();
         }
 
         private void txtBoxKryptonText_TextChanged(object sender, EventArgs e)
         {
-            if (txtBoxKryptonText.Modified)
-                RecordEdit();
-                
-            
+
+            if (txtBoxKryptonText.Text != strMyOriginalText && isChanged)
+            {
+                lblTittle.Text = "*" + lblTittle.Text;
+                isChanged = false;
+            }
+
+            else if (txtBoxKryptonText.Text == strMyOriginalText)
+            {
+                lblTittle.Text = lblTittle.Text.Remove(0, 1);
+                isChanged = true;
+            }
+        }
+
+        private void reUndoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.Redo();
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBoxKryptonText.SelectedText))
+                txtBoxKryptonText.Cut();
+        }
+
+        private void txtBoxKryptonText_SelectionChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBoxKryptonText.SelectedText))
+                cutToolStripMenuItem.Enabled = true;
+            else
+                cutToolStripMenuItem.Enabled = false;
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.Copy();
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.Paste();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (txtBoxKryptonText.SelectionStart < txtBoxKryptonText.Text.Length) // after cursor 
+            {
+                int startCursorLocation = txtBoxKryptonText.SelectionStart;
+                txtBoxKryptonText.Text = txtBoxKryptonText.Text.Remove(txtBoxKryptonText.SelectionStart, 1);
+                txtBoxKryptonText.SelectionStart = startCursorLocation;
+            }
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.SelectAll();
+        }
+
+        private void timeDateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.Text = txtBoxKryptonText.Text.Insert(txtBoxKryptonText.SelectionStart, DateTime.Now.ToString("h:mm tt d/M/yyyy "));
+        }
+
+        private void fontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (FontDialog font = new FontDialog())
+            {
+                if (font.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(txtBoxKryptonText.Text))
+                {
+                    txtBoxKryptonText.SelectAll();
+                    txtBoxKryptonText.SelectionFont = font.Font;
+
+                }
+            }
+        }
+
+        private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.ZoomFactor = 2.0F;
         }
     }
 }
