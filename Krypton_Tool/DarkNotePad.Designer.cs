@@ -65,7 +65,7 @@ namespace Krypton_Tool
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.rjBtnMaximize = new RJControls.RJConpanents.RJButton();
             this.rjBtnClose = new RJControls.RJConpanents.RJButton();
-            this.rjToggleButton1 = new RJControls.RJConpanents.RJToggleButton();
+            this.rjToggleBtnColor = new RJControls.RJConpanents.RJToggleButton();
             this.menuStripNotePad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
@@ -261,7 +261,7 @@ namespace Krypton_Tool
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -269,7 +269,7 @@ namespace Krypton_Tool
             // 
             this.reUndoToolStripMenuItem.Name = "reUndoToolStripMenuItem";
             this.reUndoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.reUndoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.reUndoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reUndoToolStripMenuItem.Text = "ReUndo";
             this.reUndoToolStripMenuItem.Click += new System.EventHandler(this.reUndoToolStripMenuItem_Click);
             // 
@@ -277,7 +277,7 @@ namespace Krypton_Tool
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
@@ -285,7 +285,7 @@ namespace Krypton_Tool
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -293,7 +293,7 @@ namespace Krypton_Tool
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
@@ -301,7 +301,7 @@ namespace Krypton_Tool
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -309,14 +309,15 @@ namespace Krypton_Tool
             // 
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
             this.findToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.findToolStripMenuItem.Text = "Find";
+            this.findToolStripMenuItem.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
             this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.selectAllToolStripMenuItem.Text = "Select All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
@@ -324,7 +325,7 @@ namespace Krypton_Tool
             // 
             this.timeDateToolStripMenuItem.Name = "timeDateToolStripMenuItem";
             this.timeDateToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.timeDateToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.timeDateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.timeDateToolStripMenuItem.Text = "Time/Date";
             this.timeDateToolStripMenuItem.Click += new System.EventHandler(this.timeDateToolStripMenuItem_Click);
             // 
@@ -341,7 +342,7 @@ namespace Krypton_Tool
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fontToolStripMenuItem.Text = "Font";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
             // 
@@ -363,7 +364,7 @@ namespace Krypton_Tool
             this.zoomOutToolStripMenuItem,
             this.restoreDefaultZoomToolStripMenuItem});
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.zoomToolStripMenuItem.Text = "Zoom";
             // 
             // zoomInToolStripMenuItem
@@ -391,7 +392,7 @@ namespace Krypton_Tool
             // statusBarToolStripMenuItem
             // 
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.statusBarToolStripMenuItem.Text = "Status Bar";
             // 
             // HelpToolStripMenuItem
@@ -407,7 +408,7 @@ namespace Krypton_Tool
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -477,20 +478,21 @@ namespace Krypton_Tool
             this.rjBtnClose.MouseEnter += new System.EventHandler(this.rjBtnClose_MouseEnter);
             this.rjBtnClose.MouseLeave += new System.EventHandler(this.rjBtnClose_MouseLeave);
             // 
-            // rjToggleButton1
+            // rjToggleBtnColor
             // 
-            this.rjToggleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rjToggleButton1.AutoSize = true;
-            this.rjToggleButton1.Location = new System.Drawing.Point(777, 45);
-            this.rjToggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButton1.Name = "rjToggleButton1";
-            this.rjToggleButton1.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
-            this.rjToggleButton1.OffToggleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(7)))), ((int)(((byte)(58)))));
-            this.rjToggleButton1.OnBackColor = System.Drawing.Color.DimGray;
-            this.rjToggleButton1.OnToggleColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.rjToggleButton1.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButton1.TabIndex = 12;
-            this.rjToggleButton1.UseVisualStyleBackColor = true;
+            this.rjToggleBtnColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rjToggleBtnColor.AutoSize = true;
+            this.rjToggleBtnColor.Location = new System.Drawing.Point(777, 45);
+            this.rjToggleBtnColor.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleBtnColor.Name = "rjToggleBtnColor";
+            this.rjToggleBtnColor.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
+            this.rjToggleBtnColor.OffToggleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(7)))), ((int)(((byte)(58)))));
+            this.rjToggleBtnColor.OnBackColor = System.Drawing.Color.DimGray;
+            this.rjToggleBtnColor.OnToggleColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.rjToggleBtnColor.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleBtnColor.TabIndex = 12;
+            this.rjToggleBtnColor.UseVisualStyleBackColor = true;
+            this.rjToggleBtnColor.CheckedChanged += new System.EventHandler(this.rjToggleButton1_CheckedChanged);
             // 
             // NotePadPage
             // 
@@ -498,7 +500,7 @@ namespace Krypton_Tool
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(59)))), ((int)(((byte)(77)))));
             this.ClientSize = new System.Drawing.Size(834, 479);
-            this.Controls.Add(this.rjToggleButton1);
+            this.Controls.Add(this.rjToggleBtnColor);
             this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.lblTittle);
             this.Controls.Add(this.txtBoxKryptonText);
@@ -531,8 +533,6 @@ namespace Krypton_Tool
         }
 
         #endregion
-
-        private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
         private RJControls.RJConpanents.RJButton rjBtnClose;
         private RJControls.RJConpanents.RJButton rjBtnMaximize;
         private RJControls.RJConpanents.RJButton rjBtnHide;
@@ -545,7 +545,7 @@ namespace Krypton_Tool
         private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
         private System.Windows.Forms.Label lblTittle;
         private System.Windows.Forms.PictureBox pictureBoxIcon;
-        private RJControls.RJConpanents.RJToggleButton rjToggleButton1;
+        private RJControls.RJConpanents.RJToggleButton rjToggleBtnColor;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
@@ -567,6 +567,7 @@ namespace Krypton_Tool
         private System.Windows.Forms.ToolStripMenuItem zoomOutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restoreDefaultZoomToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statusBarToolStripMenuItem;
+        private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
     }
 }
 

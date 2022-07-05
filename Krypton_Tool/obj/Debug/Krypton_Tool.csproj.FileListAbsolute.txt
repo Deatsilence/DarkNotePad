@@ -15,6 +15,7 @@ C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\bin\Debug\ComponentFactory
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.csproj.AssemblyReference.cache
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.About.resources
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.NotePadPage.resources
+C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.Find.resources
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.Properties.Resources.resources
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.csproj.GenerateResource.cache
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.csproj.CoreCompileInputs.cache

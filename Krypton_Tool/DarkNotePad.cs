@@ -53,6 +53,7 @@ namespace Krypton_Tool
             this.MinimumSize = this.Size;
             this.BackColor = Color.FromArgb(31, 59, 77);
 
+
             // Form Buttons
             rjBtnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 7, 58);
 
@@ -62,6 +63,7 @@ namespace Krypton_Tool
             txtBoxKryptonText.StateCommon.Content.Color1 = Color.FromArgb(250, 252, 252);
             txtBoxKryptonText.Text = string.Empty;
             defaultZoom = txtBoxKryptonText.ZoomFactor;
+            txtBoxKryptonText.Focus();
 
             // MenuStripItems
             cutToolStripMenuItem.Enabled = false;
@@ -365,6 +367,29 @@ namespace Krypton_Tool
         private void restoreDefaultZoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
             txtBoxKryptonText.ZoomFactor = 1F; // don't working
+        }
+
+        private void findToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (Find find = new Find())
+            {
+                find.Location = new Point(50, 70);
+                find.Show();
+            }
+        }
+
+        private void rjToggleButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rjToggleBtnColor.Checked)
+            {
+                txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(252, 250, 250);
+                txtBoxKryptonText.StateActive.Content.Color1 = Color.Black;
+            }
+            else
+            {
+                txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
+                txtBoxKryptonText.StateActive.Content.Color1 = Color.FromArgb(252, 250, 250);
+            }
         }
     }
 }
