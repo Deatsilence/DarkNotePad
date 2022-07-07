@@ -13,7 +13,7 @@ using RJControls;
 using System.Runtime.InteropServices;
 using System.IO;
 
-namespace Krypton_Tool
+namespace DarkNotePad
 {
     public partial class NotePadPage : KryptonForm
     {

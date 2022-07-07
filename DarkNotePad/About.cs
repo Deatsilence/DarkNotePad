@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Krypton_Tool
+namespace DarkNotePad
 {
     public partial class About : Form
     {

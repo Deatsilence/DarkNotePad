@@ -1,5 +1,5 @@
 ﻿
-namespace Krypton_Tool
+namespace DarkNotePad
 {
     partial class NotePadPage
     {

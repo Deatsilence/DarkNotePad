@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{09F6C721-7EF1-4E51-9897-DF2608FFED23}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Krypton_Tool</RootNamespace>
-    <AssemblyName>Krypton_Tool</AssemblyName>
+    <RootNamespace>DarkNotePad</RootNamespace>
+    <AssemblyName>DarkNotePad</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Krypton_Tool.Program</StartupObject>
+    <StartupObject>DarkNotePad.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>

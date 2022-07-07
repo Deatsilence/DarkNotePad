@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Krypton_Tool
+namespace DarkNotePad
 {
     static class Program
     {
