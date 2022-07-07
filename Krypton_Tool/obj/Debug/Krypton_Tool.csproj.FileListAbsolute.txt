@@ -12,13 +12,12 @@ C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\bin\Debug\ComponentFactory
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\bin\Debug\ComponentFactory.Krypton.Ribbon.pdb
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\bin\Debug\ComponentFactory.Krypton.Toolkit.pdb
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\bin\Debug\ComponentFactory.Krypton.Workspace.pdb
-C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.csproj.AssemblyReference.cache
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.About.resources
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.NotePadPage.resources
-C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.Find.resources
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.Properties.Resources.resources
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.csproj.GenerateResource.cache
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.csproj.CoreCompileInputs.cache
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.csproj.CopyComplete
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.exe
 C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.pdb
+C:\Users\mert_\source\repos\Krypton_Tool\Krypton_Tool\obj\Debug\Krypton_Tool.csproj.AssemblyReference.cache

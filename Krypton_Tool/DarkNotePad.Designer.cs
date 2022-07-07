@@ -53,6 +53,8 @@ namespace Krypton_Tool
             this.timeDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restoreDefaultFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,6 +68,13 @@ namespace Krypton_Tool
             this.rjBtnMaximize = new RJControls.RJConpanents.RJButton();
             this.rjBtnClose = new RJControls.RJConpanents.RJButton();
             this.rjToggleBtnColor = new RJControls.RJConpanents.RJToggleButton();
+            this.txtBoxKryptonFindText = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.lblFind = new System.Windows.Forms.Label();
+            this.lblIsThere = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rjbtnUpFind = new RJControls.RJConpanents.RJButton();
+            this.rjbtnDownFind = new RJControls.RJConpanents.RJButton();
+            this.rjbtnCancelFind = new RJControls.RJConpanents.RJButton();
             this.menuStripNotePad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
@@ -105,6 +114,7 @@ namespace Krypton_Tool
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(46)))));
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(46)))));
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(46)))));
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(46)))));
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -182,7 +192,7 @@ namespace Krypton_Tool
             this.HelpToolStripMenuItem});
             this.menuStripNotePad.Location = new System.Drawing.Point(0, 43);
             this.menuStripNotePad.Name = "menuStripNotePad";
-            this.menuStripNotePad.Size = new System.Drawing.Size(694, 24);
+            this.menuStripNotePad.Size = new System.Drawing.Size(280, 24);
             this.menuStripNotePad.TabIndex = 9;
             this.menuStripNotePad.Text = "menuStrip1";
             // 
@@ -261,7 +271,7 @@ namespace Krypton_Tool
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -269,7 +279,7 @@ namespace Krypton_Tool
             // 
             this.reUndoToolStripMenuItem.Name = "reUndoToolStripMenuItem";
             this.reUndoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.reUndoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reUndoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.reUndoToolStripMenuItem.Text = "ReUndo";
             this.reUndoToolStripMenuItem.Click += new System.EventHandler(this.reUndoToolStripMenuItem_Click);
             // 
@@ -277,7 +287,7 @@ namespace Krypton_Tool
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
@@ -285,7 +295,7 @@ namespace Krypton_Tool
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -293,7 +303,7 @@ namespace Krypton_Tool
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
@@ -301,7 +311,7 @@ namespace Krypton_Tool
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -309,7 +319,7 @@ namespace Krypton_Tool
             // 
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
             this.findToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.findToolStripMenuItem.Text = "Find";
             this.findToolStripMenuItem.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
             // 
@@ -317,7 +327,7 @@ namespace Krypton_Tool
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
             this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.selectAllToolStripMenuItem.Text = "Select All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
@@ -325,7 +335,7 @@ namespace Krypton_Tool
             // 
             this.timeDateToolStripMenuItem.Name = "timeDateToolStripMenuItem";
             this.timeDateToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.timeDateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.timeDateToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.timeDateToolStripMenuItem.Text = "Time/Date";
             this.timeDateToolStripMenuItem.Click += new System.EventHandler(this.timeDateToolStripMenuItem_Click);
             // 
@@ -333,7 +343,9 @@ namespace Krypton_Tool
             // 
             this.FormatToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(59)))), ((int)(((byte)(77)))));
             this.FormatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fontToolStripMenuItem});
+            this.fontToolStripMenuItem,
+            this.restoreDefaultFontToolStripMenuItem,
+            this.wordToolStripMenuItem});
             this.FormatToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.FormatToolStripMenuItem.Name = "FormatToolStripMenuItem";
             this.FormatToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
@@ -342,9 +354,22 @@ namespace Krypton_Tool
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.fontToolStripMenuItem.Text = "Font";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
+            // 
+            // restoreDefaultFontToolStripMenuItem
+            // 
+            this.restoreDefaultFontToolStripMenuItem.Name = "restoreDefaultFontToolStripMenuItem";
+            this.restoreDefaultFontToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.restoreDefaultFontToolStripMenuItem.Text = "Restore Default Font";
+            this.restoreDefaultFontToolStripMenuItem.Click += new System.EventHandler(this.restoreDefaultFontToolStripMenuItem_Click);
+            // 
+            // wordToolStripMenuItem
+            // 
+            this.wordToolStripMenuItem.Name = "wordToolStripMenuItem";
+            this.wordToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.wordToolStripMenuItem.Text = "Word Wrap";
             // 
             // ViewToolStripMenuItem
             // 
@@ -364,7 +389,7 @@ namespace Krypton_Tool
             this.zoomOutToolStripMenuItem,
             this.restoreDefaultZoomToolStripMenuItem});
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zoomToolStripMenuItem.Text = "Zoom";
             // 
             // zoomInToolStripMenuItem
@@ -392,7 +417,7 @@ namespace Krypton_Tool
             // statusBarToolStripMenuItem
             // 
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.statusBarToolStripMenuItem.Text = "Status Bar";
             // 
             // HelpToolStripMenuItem
@@ -408,7 +433,7 @@ namespace Krypton_Tool
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -492,7 +517,116 @@ namespace Krypton_Tool
             this.rjToggleBtnColor.Size = new System.Drawing.Size(45, 22);
             this.rjToggleBtnColor.TabIndex = 12;
             this.rjToggleBtnColor.UseVisualStyleBackColor = true;
-            this.rjToggleBtnColor.CheckedChanged += new System.EventHandler(this.rjToggleButton1_CheckedChanged);
+            this.rjToggleBtnColor.CheckedChanged += new System.EventHandler(this.rjToggleBtnColor_CheckedChanged);
+            // 
+            // txtBoxKryptonFindText
+            // 
+            this.txtBoxKryptonFindText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxKryptonFindText.Location = new System.Drawing.Point(366, 38);
+            this.txtBoxKryptonFindText.Name = "txtBoxKryptonFindText";
+            this.txtBoxKryptonFindText.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.txtBoxKryptonFindText.Size = new System.Drawing.Size(187, 26);
+            this.txtBoxKryptonFindText.StateActive.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtBoxKryptonFindText.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
+            this.txtBoxKryptonFindText.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
+            this.txtBoxKryptonFindText.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
+            this.txtBoxKryptonFindText.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtBoxKryptonFindText.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.txtBoxKryptonFindText.StateCommon.Border.Rounding = 8;
+            this.txtBoxKryptonFindText.StateCommon.Border.Width = 1;
+            this.txtBoxKryptonFindText.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.txtBoxKryptonFindText.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxKryptonFindText.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtBoxKryptonFindText.TabIndex = 13;
+            // 
+            // lblFind
+            // 
+            this.lblFind.AutoSize = true;
+            this.lblFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(59)))), ((int)(((byte)(77)))));
+            this.lblFind.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFind.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.lblFind.Location = new System.Drawing.Point(322, 42);
+            this.lblFind.Name = "lblFind";
+            this.lblFind.Size = new System.Drawing.Size(40, 23);
+            this.lblFind.TabIndex = 14;
+            this.lblFind.Text = "Find:";
+            // 
+            // lblIsThere
+            // 
+            this.lblIsThere.AutoSize = true;
+            this.lblIsThere.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIsThere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.lblIsThere.Location = new System.Drawing.Point(559, 41);
+            this.lblIsThere.Name = "lblIsThere";
+            this.lblIsThere.Size = new System.Drawing.Size(38, 23);
+            this.lblIsThere.TabIndex = 15;
+            this.lblIsThere.Text = "0 / 0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.label1.Location = new System.Drawing.Point(606, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 37);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "|";
+            // 
+            // rjbtnUpFind
+            // 
+            this.rjbtnUpFind.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjbtnUpFind.BackGroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjbtnUpFind.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjbtnUpFind.BorderRadius = 0;
+            this.rjbtnUpFind.BorderSize = 0;
+            this.rjbtnUpFind.FlatAppearance.BorderSize = 0;
+            this.rjbtnUpFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjbtnUpFind.ForeColor = System.Drawing.Color.White;
+            this.rjbtnUpFind.Location = new System.Drawing.Point(638, 44);
+            this.rjbtnUpFind.Name = "rjbtnUpFind";
+            this.rjbtnUpFind.Size = new System.Drawing.Size(16, 16);
+            this.rjbtnUpFind.TabIndex = 19;
+            this.rjbtnUpFind.TextColor = System.Drawing.Color.White;
+            this.rjbtnUpFind.UseVisualStyleBackColor = false;
+            // 
+            // rjbtnDownFind
+            // 
+            this.rjbtnDownFind.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjbtnDownFind.BackGroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjbtnDownFind.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjbtnDownFind.BorderRadius = 0;
+            this.rjbtnDownFind.BorderSize = 0;
+            this.rjbtnDownFind.FlatAppearance.BorderSize = 0;
+            this.rjbtnDownFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjbtnDownFind.ForeColor = System.Drawing.Color.White;
+            this.rjbtnDownFind.Location = new System.Drawing.Point(663, 44);
+            this.rjbtnDownFind.Name = "rjbtnDownFind";
+            this.rjbtnDownFind.Size = new System.Drawing.Size(16, 16);
+            this.rjbtnDownFind.TabIndex = 19;
+            this.rjbtnDownFind.TextColor = System.Drawing.Color.White;
+            this.rjbtnDownFind.UseVisualStyleBackColor = false;
+            // 
+            // rjbtnCancelFind
+            // 
+            this.rjbtnCancelFind.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjbtnCancelFind.BackGroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjbtnCancelFind.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjbtnCancelFind.BorderRadius = 0;
+            this.rjbtnCancelFind.BorderSize = 0;
+            this.rjbtnCancelFind.FlatAppearance.BorderSize = 0;
+            this.rjbtnCancelFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjbtnCancelFind.ForeColor = System.Drawing.Color.White;
+            this.rjbtnCancelFind.Location = new System.Drawing.Point(688, 44);
+            this.rjbtnCancelFind.Name = "rjbtnCancelFind";
+            this.rjbtnCancelFind.Size = new System.Drawing.Size(16, 16);
+            this.rjbtnCancelFind.TabIndex = 19;
+            this.rjbtnCancelFind.TextColor = System.Drawing.Color.White;
+            this.rjbtnCancelFind.UseVisualStyleBackColor = false;
             // 
             // NotePadPage
             // 
@@ -500,6 +634,13 @@ namespace Krypton_Tool
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(59)))), ((int)(((byte)(77)))));
             this.ClientSize = new System.Drawing.Size(834, 479);
+            this.Controls.Add(this.rjbtnCancelFind);
+            this.Controls.Add(this.rjbtnDownFind);
+            this.Controls.Add(this.rjbtnUpFind);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblIsThere);
+            this.Controls.Add(this.lblFind);
+            this.Controls.Add(this.txtBoxKryptonFindText);
             this.Controls.Add(this.rjToggleBtnColor);
             this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.lblTittle);
@@ -568,6 +709,15 @@ namespace Krypton_Tool
         private System.Windows.Forms.ToolStripMenuItem restoreDefaultZoomToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statusBarToolStripMenuItem;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
+        private System.Windows.Forms.ToolStripMenuItem restoreDefaultFontToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wordToolStripMenuItem;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtBoxKryptonFindText;
+        private System.Windows.Forms.Label lblFind;
+        private System.Windows.Forms.Label lblIsThere;
+        private System.Windows.Forms.Label label1;
+        private RJControls.RJConpanents.RJButton rjbtnUpFind;
+        private RJControls.RJConpanents.RJButton rjbtnDownFind;
+        private RJControls.RJConpanents.RJButton rjbtnCancelFind;
     }
 }
 

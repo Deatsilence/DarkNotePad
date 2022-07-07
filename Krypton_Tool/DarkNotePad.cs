@@ -28,7 +28,9 @@ namespace Krypton_Tool
         // Modified
         bool isChanged = true;
         // Default zoom
-        float defaultZoom;
+        Font defaultFont;
+        // FindCounter
+        static bool findCounter = false; 
 
 
         // Constructor
@@ -36,8 +38,8 @@ namespace Krypton_Tool
         {
             InitializeComponent();
             strMyOriginalText = txtBoxKryptonText.Text;
-            menuStripNotePad.Renderer = new MyRenderer();
-
+            this.menuStripNotePad.Renderer = new MyRenderer();
+            //this.menuStripNotePad.Renderer = new WhiteArrowRenderer();
         }
 
         bool IsSave()
@@ -53,20 +55,59 @@ namespace Krypton_Tool
             this.MinimumSize = this.Size;
             this.BackColor = Color.FromArgb(31, 59, 77);
 
-
             // Form Buttons
             rjBtnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 7, 58);
+            rjBtnClose.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 7, 58);
+            rjBtnHide.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
+            rjBtnMaximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
+
+            // Find Buttons
+            rjbtnUpFind.BackColor = Color.FromArgb(31, 59, 77);
+            rjbtnUpFind.FlatStyle = FlatStyle.Flat;
+            rjbtnUpFind.BorderSize = 0;
+
+            rjbtnDownFind.BackColor = Color.FromArgb(31, 59, 77);
+            rjbtnDownFind.FlatStyle = FlatStyle.Flat;
+            rjbtnDownFind.BorderSize = 0;
+
+            rjbtnCancelFind.BackColor = Color.FromArgb(31, 59, 77);
+            rjbtnCancelFind.FlatStyle = FlatStyle.Flat;
+            rjbtnCancelFind.BorderSize = 0;
+
 
             // rich Textbox
             txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
             txtBoxKryptonText.StateCommon.Border.Color1 = Color.FromArgb(52, 56, 55);
             txtBoxKryptonText.StateCommon.Content.Color1 = Color.FromArgb(250, 252, 252);
             txtBoxKryptonText.Text = string.Empty;
-            defaultZoom = txtBoxKryptonText.ZoomFactor;
+            defaultFont = txtBoxKryptonText.Font;
             txtBoxKryptonText.Focus();
+
+            // Find Textbox
+            txtBoxKryptonFindText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
+            txtBoxKryptonFindText.StateCommon.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
+            txtBoxKryptonFindText.StateCommon.Border.Rounding = 8;
+            txtBoxKryptonFindText.StateCommon.Border.Width = 1;
+            txtBoxKryptonFindText.StateCommon.Content.Color1 = Color.FromArgb(252, 250, 250);
+            txtBoxKryptonFindText.StateCommon.Content.Padding = new Padding(10, 0, 10, 0);
+            txtBoxKryptonFindText.Visible = false;
+
 
             // MenuStripItems
             cutToolStripMenuItem.Enabled = false;
+            foreach (ToolStripMenuItem menuItem in menuStripNotePad.Items)
+            {
+                ((ToolStripDropDownMenu)menuItem.DropDown).ShowImageMargin = false;
+                menuItem.DropDown.BackColor = Color.FromArgb(31, 31, 46);
+                menuItem.DropDown.ForeColor = Color.FromArgb(225, 225, 225);
+
+                foreach (ToolStripMenuItem item in menuItem.DropDownItems)
+                {
+                    ((ToolStripDropDownMenu)item.DropDown).ShowImageMargin = false;
+                    item.DropDown.BackColor = Color.FromArgb(31, 31, 46);
+                    item.DropDown.ForeColor = Color.FromArgb(225, 225, 225);
+                }
+            }
         }
         private void NotePadPage_MouseDown(object sender, MouseEventArgs e)
         {
@@ -247,6 +288,13 @@ namespace Krypton_Tool
         private class MyRenderer : ToolStripProfessionalRenderer
         {
             public MyRenderer() : base(new MyColors()) { }
+            protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
+            {
+                var tsMenuItem = e.Item as ToolStripMenuItem;
+                if (tsMenuItem != null)
+                    e.ArrowColor = Color.White;
+                base.OnRenderArrow(e);
+            }
         }
         private class MyColors : ProfessionalColorTable
         {
@@ -279,7 +327,6 @@ namespace Krypton_Tool
             {
                 get { return Color.FromArgb(31, 31, 46); }
             }
-
         }
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -296,7 +343,7 @@ namespace Krypton_Tool
                 isChanged = false;
             }
 
-            else if (txtBoxKryptonText.Text == strMyOriginalText)
+            else if (txtBoxKryptonText.Text == strMyOriginalText && lblTittle.Text.Contains('*') == true)
             {
                 lblTittle.Text = lblTittle.Text.Remove(0, 1);
                 isChanged = true;
@@ -366,19 +413,25 @@ namespace Krypton_Tool
 
         private void restoreDefaultZoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            txtBoxKryptonText.ZoomFactor = 1F; // don't working
+            txtBoxKryptonText.ZoomFactor = 0.9F;
+            txtBoxKryptonText.ZoomFactor = 1F;
         }
 
         private void findToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (Find find = new Find())
+            if (findCounter)
             {
-                find.Location = new Point(50, 70);
-                find.Show();
+                txtBoxKryptonFindText.Visible = findCounter;
+                findCounter = false;
+            }
+            else
+            {
+                txtBoxKryptonFindText.Visible = findCounter;
+                findCounter = true;
             }
         }
 
-        private void rjToggleButton1_CheckedChanged(object sender, EventArgs e)
+        private void rjToggleBtnColor_CheckedChanged(object sender, EventArgs e)
         {
             if (rjToggleBtnColor.Checked)
             {
@@ -389,7 +442,14 @@ namespace Krypton_Tool
             {
                 txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
                 txtBoxKryptonText.StateActive.Content.Color1 = Color.FromArgb(252, 250, 250);
+
             }
+        }
+
+        private void restoreDefaultFontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.SelectAll();
+            txtBoxKryptonText.SelectionFont = defaultFont;
         }
     }
 }
