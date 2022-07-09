@@ -30,7 +30,7 @@ namespace DarkNotePad
         // Default zoom
         Font defaultFont;
         // FindCounter
-        static bool findCounter = false; 
+        static bool findCounter = false;
 
 
         // Constructor
@@ -39,9 +39,9 @@ namespace DarkNotePad
             InitializeComponent();
             strMyOriginalText = txtBoxKryptonText.Text;
             this.menuStripNotePad.Renderer = new MyRenderer();
-            //this.menuStripNotePad.Renderer = new WhiteArrowRenderer();
         }
 
+        // is it same ?
         bool IsSave()
         {
             if (strMyOriginalText != txtBoxKryptonText.Text)
@@ -61,19 +61,9 @@ namespace DarkNotePad
             rjBtnHide.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
             rjBtnMaximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
 
-            // Find Buttons
-            rjbtnUpFind.BackColor = Color.FromArgb(31, 59, 77);
-            rjbtnUpFind.FlatStyle = FlatStyle.Flat;
-            rjbtnUpFind.BorderSize = 0;
-
-            rjbtnDownFind.BackColor = Color.FromArgb(31, 59, 77);
-            rjbtnDownFind.FlatStyle = FlatStyle.Flat;
-            rjbtnDownFind.BorderSize = 0;
-
-            rjbtnCancelFind.BackColor = Color.FromArgb(31, 59, 77);
-            rjbtnCancelFind.FlatStyle = FlatStyle.Flat;
-            rjbtnCancelFind.BorderSize = 0;
-
+            // Labels
+            lblFind.Visible = false;
+            lblIsThere.Visible = false;
 
             // rich Textbox
             txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
@@ -91,6 +81,13 @@ namespace DarkNotePad
             txtBoxKryptonFindText.StateCommon.Content.Color1 = Color.FromArgb(252, 250, 250);
             txtBoxKryptonFindText.StateCommon.Content.Padding = new Padding(10, 0, 10, 0);
             txtBoxKryptonFindText.Visible = false;
+
+            // Word Wrap
+            txtBoxKryptonText.WordWrap = wordToolStripMenuItem.Checked;
+            statusBarToolStripMenuItem.Enabled = !wordToolStripMenuItem.Checked;
+            if (statusBarToolStripMenuItem.Enabled)
+                statusBarToolStripMenuItem.Enabled = true;
+            statusBar.Visible = statusBarToolStripMenuItem.Checked;
 
 
             // MenuStripItems
@@ -367,6 +364,16 @@ namespace DarkNotePad
                 cutToolStripMenuItem.Enabled = true;
             else
                 cutToolStripMenuItem.Enabled = false;
+            UpdateStatus();
+        }
+
+        private void UpdateStatus()
+        {
+            int position = txtBoxKryptonText.SelectionStart;
+            int line = txtBoxKryptonText.GetLineFromCharIndex(position) + 1;
+            int column = position - txtBoxKryptonText.GetFirstCharIndexOfCurrentLine() + 1;
+
+            toolStripStatusLineCol.Text = "Ln " + line + ", Col " + column;
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -422,11 +429,15 @@ namespace DarkNotePad
             if (findCounter)
             {
                 txtBoxKryptonFindText.Visible = findCounter;
+                lblFind.Visible = findCounter;
+                lblIsThere.Visible = findCounter;
                 findCounter = false;
             }
             else
             {
                 txtBoxKryptonFindText.Visible = findCounter;
+                lblFind.Visible = findCounter;
+                lblIsThere.Visible = findCounter;
                 findCounter = true;
             }
         }
@@ -442,7 +453,6 @@ namespace DarkNotePad
             {
                 txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
                 txtBoxKryptonText.StateActive.Content.Color1 = Color.FromArgb(252, 250, 250);
-
             }
         }
 
@@ -450,6 +460,48 @@ namespace DarkNotePad
         {
             txtBoxKryptonText.SelectAll();
             txtBoxKryptonText.SelectionFont = defaultFont;
+        }
+
+        private void txtBoxKryptonFindText_TextChanged(object sender, EventArgs e)
+        {
+            int SummationFind = 0;
+            int index = 0;
+            string temp = txtBoxKryptonText.Text;
+            txtBoxKryptonText.Text = "";
+            txtBoxKryptonText.Text = temp;
+
+            if (txtBoxKryptonFindText.Text != string.Empty)
+            {
+                while (index < txtBoxKryptonText.Text.LastIndexOf(txtBoxKryptonFindText.Text))
+                {
+                    // Searches the text in a RichTextBox control for a string within a range of text withing the control
+                    txtBoxKryptonText.Find(txtBoxKryptonFindText.Text, index, txtBoxKryptonText.TextLength, RichTextBoxFinds.None);
+                    // Selection color. this is added automatically when a match is found
+                    txtBoxKryptonText.SelectionBackColor = Color.DarkOrange;
+                    // After a match is found the index is increased so the search won't stop at the same match again. this
+                    index = txtBoxKryptonText.Text.IndexOf(txtBoxKryptonFindText.Text, index, StringComparison.InvariantCultureIgnoreCase) + 1;
+                    SummationFind++;
+                }
+                lblIsThere.Text = string.Format("{0}", SummationFind);
+            }
+            else
+            {
+                SummationFind = 0;
+                lblIsThere.Text = string.Format("{0}", SummationFind);
+            }
+        }
+
+        private void wordToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.WordWrap = wordToolStripMenuItem.Checked;
+            statusBarToolStripMenuItem.Enabled = !wordToolStripMenuItem.Checked;
+            statusBarToolStripMenuItem.Checked = true;
+            statusBar.Visible = statusBarToolStripMenuItem.Enabled;
+        }
+
+        private void statusBarToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            statusBar.Visible = statusBarToolStripMenuItem.Checked;
         }
     }
 }

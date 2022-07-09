@@ -71,12 +71,13 @@ namespace DarkNotePad
             this.txtBoxKryptonFindText = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.lblFind = new System.Windows.Forms.Label();
             this.lblIsThere = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.rjbtnUpFind = new RJControls.RJConpanents.RJButton();
-            this.rjbtnDownFind = new RJControls.RJConpanents.RJButton();
-            this.rjbtnCancelFind = new RJControls.RJConpanents.RJButton();
+            this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusSpace = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLineCol = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusZoom = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStripNotePad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
+            this.statusBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -192,7 +193,7 @@ namespace DarkNotePad
             this.HelpToolStripMenuItem});
             this.menuStripNotePad.Location = new System.Drawing.Point(0, 43);
             this.menuStripNotePad.Name = "menuStripNotePad";
-            this.menuStripNotePad.Size = new System.Drawing.Size(280, 24);
+            this.menuStripNotePad.Size = new System.Drawing.Size(262, 24);
             this.menuStripNotePad.TabIndex = 9;
             this.menuStripNotePad.Text = "menuStrip1";
             // 
@@ -367,9 +368,11 @@ namespace DarkNotePad
             // 
             // wordToolStripMenuItem
             // 
+            this.wordToolStripMenuItem.CheckOnClick = true;
             this.wordToolStripMenuItem.Name = "wordToolStripMenuItem";
             this.wordToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.wordToolStripMenuItem.Text = "Word Wrap";
+            this.wordToolStripMenuItem.CheckedChanged += new System.EventHandler(this.wordToolStripMenuItem_CheckedChanged);
             // 
             // ViewToolStripMenuItem
             // 
@@ -416,9 +419,11 @@ namespace DarkNotePad
             // 
             // statusBarToolStripMenuItem
             // 
+            this.statusBarToolStripMenuItem.CheckOnClick = true;
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
             this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.statusBarToolStripMenuItem.Text = "Status Bar";
+            this.statusBarToolStripMenuItem.CheckedChanged += new System.EventHandler(this.statusBarToolStripMenuItem_CheckedChanged);
             // 
             // HelpToolStripMenuItem
             // 
@@ -433,7 +438,7 @@ namespace DarkNotePad
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -522,7 +527,7 @@ namespace DarkNotePad
             // txtBoxKryptonFindText
             // 
             this.txtBoxKryptonFindText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoxKryptonFindText.Location = new System.Drawing.Point(366, 38);
+            this.txtBoxKryptonFindText.Location = new System.Drawing.Point(345, 38);
             this.txtBoxKryptonFindText.Name = "txtBoxKryptonFindText";
             this.txtBoxKryptonFindText.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.txtBoxKryptonFindText.Size = new System.Drawing.Size(187, 26);
@@ -542,6 +547,7 @@ namespace DarkNotePad
             this.txtBoxKryptonFindText.StateCommon.Content.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxKryptonFindText.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtBoxKryptonFindText.TabIndex = 13;
+            this.txtBoxKryptonFindText.TextChanged += new System.EventHandler(this.txtBoxKryptonFindText_TextChanged);
             // 
             // lblFind
             // 
@@ -549,7 +555,7 @@ namespace DarkNotePad
             this.lblFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(59)))), ((int)(((byte)(77)))));
             this.lblFind.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFind.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.lblFind.Location = new System.Drawing.Point(322, 42);
+            this.lblFind.Location = new System.Drawing.Point(301, 42);
             this.lblFind.Name = "lblFind";
             this.lblFind.Size = new System.Drawing.Size(40, 23);
             this.lblFind.TabIndex = 14;
@@ -560,73 +566,48 @@ namespace DarkNotePad
             this.lblIsThere.AutoSize = true;
             this.lblIsThere.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIsThere.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.lblIsThere.Location = new System.Drawing.Point(559, 41);
+            this.lblIsThere.Location = new System.Drawing.Point(538, 41);
             this.lblIsThere.Name = "lblIsThere";
-            this.lblIsThere.Size = new System.Drawing.Size(38, 23);
+            this.lblIsThere.Size = new System.Drawing.Size(0, 23);
             this.lblIsThere.TabIndex = 15;
-            this.lblIsThere.Text = "0 / 0";
             // 
-            // label1
+            // statusBar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.label1.Location = new System.Drawing.Point(606, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 37);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "|";
+            this.statusBar.AutoSize = false;
+            this.statusBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
+            this.statusBar.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusSpace,
+            this.toolStripStatusLineCol,
+            this.toolStripStatusZoom});
+            this.statusBar.Location = new System.Drawing.Point(0, 430);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(809, 22);
+            this.statusBar.TabIndex = 16;
+            this.statusBar.Text = "statusStrip1";
             // 
-            // rjbtnUpFind
+            // toolStripStatusSpace
             // 
-            this.rjbtnUpFind.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjbtnUpFind.BackGroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjbtnUpFind.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjbtnUpFind.BorderRadius = 0;
-            this.rjbtnUpFind.BorderSize = 0;
-            this.rjbtnUpFind.FlatAppearance.BorderSize = 0;
-            this.rjbtnUpFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjbtnUpFind.ForeColor = System.Drawing.Color.White;
-            this.rjbtnUpFind.Location = new System.Drawing.Point(638, 44);
-            this.rjbtnUpFind.Name = "rjbtnUpFind";
-            this.rjbtnUpFind.Size = new System.Drawing.Size(16, 16);
-            this.rjbtnUpFind.TabIndex = 19;
-            this.rjbtnUpFind.TextColor = System.Drawing.Color.White;
-            this.rjbtnUpFind.UseVisualStyleBackColor = false;
+            this.toolStripStatusSpace.AutoSize = false;
+            this.toolStripStatusSpace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
+            this.toolStripStatusSpace.Name = "toolStripStatusSpace";
+            this.toolStripStatusSpace.Size = new System.Drawing.Size(350, 17);
             // 
-            // rjbtnDownFind
+            // toolStripStatusLineCol
             // 
-            this.rjbtnDownFind.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjbtnDownFind.BackGroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjbtnDownFind.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjbtnDownFind.BorderRadius = 0;
-            this.rjbtnDownFind.BorderSize = 0;
-            this.rjbtnDownFind.FlatAppearance.BorderSize = 0;
-            this.rjbtnDownFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjbtnDownFind.ForeColor = System.Drawing.Color.White;
-            this.rjbtnDownFind.Location = new System.Drawing.Point(663, 44);
-            this.rjbtnDownFind.Name = "rjbtnDownFind";
-            this.rjbtnDownFind.Size = new System.Drawing.Size(16, 16);
-            this.rjbtnDownFind.TabIndex = 19;
-            this.rjbtnDownFind.TextColor = System.Drawing.Color.White;
-            this.rjbtnDownFind.UseVisualStyleBackColor = false;
+            this.toolStripStatusLineCol.AutoSize = false;
+            this.toolStripStatusLineCol.Name = "toolStripStatusLineCol";
+            this.toolStripStatusLineCol.Size = new System.Drawing.Size(150, 17);
+            this.toolStripStatusLineCol.Text = "Ln 1, Col 1";
+            this.toolStripStatusLineCol.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // rjbtnCancelFind
+            // toolStripStatusZoom
             // 
-            this.rjbtnCancelFind.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjbtnCancelFind.BackGroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjbtnCancelFind.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjbtnCancelFind.BorderRadius = 0;
-            this.rjbtnCancelFind.BorderSize = 0;
-            this.rjbtnCancelFind.FlatAppearance.BorderSize = 0;
-            this.rjbtnCancelFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjbtnCancelFind.ForeColor = System.Drawing.Color.White;
-            this.rjbtnCancelFind.Location = new System.Drawing.Point(688, 44);
-            this.rjbtnCancelFind.Name = "rjbtnCancelFind";
-            this.rjbtnCancelFind.Size = new System.Drawing.Size(16, 16);
-            this.rjbtnCancelFind.TabIndex = 19;
-            this.rjbtnCancelFind.TextColor = System.Drawing.Color.White;
-            this.rjbtnCancelFind.UseVisualStyleBackColor = false;
+            this.toolStripStatusZoom.AutoSize = false;
+            this.toolStripStatusZoom.Name = "toolStripStatusZoom";
+            this.toolStripStatusZoom.Size = new System.Drawing.Size(50, 17);
+            this.toolStripStatusZoom.Text = "%100";
+            this.toolStripStatusZoom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // NotePadPage
             // 
@@ -634,10 +615,7 @@ namespace DarkNotePad
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(59)))), ((int)(((byte)(77)))));
             this.ClientSize = new System.Drawing.Size(834, 479);
-            this.Controls.Add(this.rjbtnCancelFind);
-            this.Controls.Add(this.rjbtnDownFind);
-            this.Controls.Add(this.rjbtnUpFind);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.statusBar);
             this.Controls.Add(this.lblIsThere);
             this.Controls.Add(this.lblFind);
             this.Controls.Add(this.txtBoxKryptonFindText);
@@ -668,6 +646,8 @@ namespace DarkNotePad
             this.menuStripNotePad.ResumeLayout(false);
             this.menuStripNotePad.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
+            this.statusBar.ResumeLayout(false);
+            this.statusBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -714,10 +694,10 @@ namespace DarkNotePad
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtBoxKryptonFindText;
         private System.Windows.Forms.Label lblFind;
         private System.Windows.Forms.Label lblIsThere;
-        private System.Windows.Forms.Label label1;
-        private RJControls.RJConpanents.RJButton rjbtnUpFind;
-        private RJControls.RJConpanents.RJButton rjbtnDownFind;
-        private RJControls.RJConpanents.RJButton rjbtnCancelFind;
+        private System.Windows.Forms.StatusStrip statusBar;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusSpace;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLineCol;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusZoom;
     }
 }
 
