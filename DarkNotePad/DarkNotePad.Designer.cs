@@ -178,6 +178,7 @@ namespace DarkNotePad
             this.txtBoxKryptonText.Text = "";
             this.txtBoxKryptonText.SelectionChanged += new System.EventHandler(this.txtBoxKryptonText_SelectionChanged);
             this.txtBoxKryptonText.TextChanged += new System.EventHandler(this.txtBoxKryptonText_TextChanged);
+            this.txtBoxKryptonText.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.txtBoxKryptonText_MouseWheel);
             // 
             // menuStripNotePad
             // 
@@ -392,7 +393,7 @@ namespace DarkNotePad
             this.zoomOutToolStripMenuItem,
             this.restoreDefaultZoomToolStripMenuItem});
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.zoomToolStripMenuItem.Text = "Zoom";
             // 
             // zoomInToolStripMenuItem
@@ -421,7 +422,7 @@ namespace DarkNotePad
             // 
             this.statusBarToolStripMenuItem.CheckOnClick = true;
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.statusBarToolStripMenuItem.Text = "Status Bar";
             this.statusBarToolStripMenuItem.CheckedChanged += new System.EventHandler(this.statusBarToolStripMenuItem_CheckedChanged);
             // 

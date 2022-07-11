@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows;
 using ComponentFactory.Krypton.Toolkit;
 using RJControls.RJConpanents;
 using RJControls;
@@ -27,8 +28,10 @@ namespace DarkNotePad
         string path;
         // Modified
         bool isChanged = true;
-        // Default zoom
+        // Default font
         Font defaultFont;
+        // Default zoom
+        float statusbarZoomState = 100;
         // FindCounter
         static bool findCounter = false;
 
@@ -48,6 +51,7 @@ namespace DarkNotePad
                 return true;
             return false;
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -89,6 +93,8 @@ namespace DarkNotePad
                 statusBarToolStripMenuItem.Enabled = true;
             statusBar.Visible = statusBarToolStripMenuItem.Checked;
 
+            // Statusbar
+            toolStripStatusZoom.Text = "%" + statusbarZoomState;
 
             // MenuStripItems
             cutToolStripMenuItem.Enabled = false;
@@ -187,6 +193,11 @@ namespace DarkNotePad
                     txtBoxKryptonText.Clear();
                 }
             }
+            else
+            {
+                path = string.Empty;
+                txtBoxKryptonText.Clear();
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -202,8 +213,10 @@ namespace DarkNotePad
                             path = ofd.FileName;
                             lblTittle.Text = ofd.SafeFileName + " - DarkNotePad";
                             Task<string> text = sr.ReadToEndAsync();
+                            strMyOriginalText = text.Result.Replace("\r", "");
                             txtBoxKryptonText.Text = text.Result;
                         }
+
                     }
                     catch (Exception ex)
                     {
@@ -211,6 +224,8 @@ namespace DarkNotePad
                     }
                 }
             }
+            txtBoxKryptonText.Focus();
+            txtBoxKryptonText.SelectionStart = txtBoxKryptonText.Text.Length;
         }
 
         private async void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -246,12 +261,16 @@ namespace DarkNotePad
                     {
                         await sw.WriteLineAsync(txtBoxKryptonText.Text);
                     }
+                    strMyOriginalText = txtBoxKryptonText.Text;
+                    txtBoxKryptonText.Text = strMyOriginalText;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            txtBoxKryptonText.Focus();
+            txtBoxKryptonText.SelectionStart = txtBoxKryptonText.Text.Length;
         }
 
         private async void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -502,6 +521,23 @@ namespace DarkNotePad
         private void statusBarToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
             statusBar.Visible = statusBarToolStripMenuItem.Checked;
+        }
+        private void txtBoxKryptonText_MouseWheel(object sender, MouseEventArgs e)
+        {
+            //int mousedeltaval = e.Delta / 120;
+
+            //if (mousedeltaval == 1) //mousewheel up move
+            //{
+            //    txtBoxKryptonText.ZoomFactor += 0.1F;
+            //    statusbarZoomState += 10;
+            //    toolStripStatusZoom.Text = "%" + statusbarZoomState;
+            //}
+            //else if (mousedeltaval == -1) //mousewheel down move
+            //{
+            //    txtBoxKryptonText.ZoomFactor -= 0.1F;
+            //    statusbarZoomState -= 10;
+            //    toolStripStatusZoom.Text = "%" + statusbarZoomState;
+            //}
         }
     }
 }
