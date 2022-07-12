@@ -34,7 +34,8 @@ namespace DarkNotePad
         float statusbarZoomState = 100;
         // FindCounter
         static bool findCounter = false;
-
+        // LblTittle
+        public static Label _lblTittle;
 
         // Constructor
         public NotePadPage()
@@ -141,8 +142,15 @@ namespace DarkNotePad
         {
             if (IsSave())
             {
-                result = MessageBox.Show("Değişiklikleri Kaydetmek İstiyormusunuz ?", "DarkNotePad",
+                MessageBoxManager.Yes = "Save";
+                MessageBoxManager.No = "Don't Save";
+                MessageBoxManager.Cancel = "Cancel";
+                MessageBoxManager.Register();
+
+                result = MessageBox.Show("Do you want to save changes on " + lblTittle.Text.Substring(0, lblTittle.Text.Length - 13).Remove(0, 1) + " ?", "DarkNotePad",
                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+
+
 
                 if (result == DialogResult.Yes)
                     Application.Exit();
@@ -185,7 +193,13 @@ namespace DarkNotePad
         {
             if (IsSave())
             {
-                DialogResult newResult = MessageBox.Show("Değişiklikleri Kaydetmek İstiyormusunuz ?", "DarkNotePad",
+                MessageBoxManager.Yes = "Save";
+                MessageBoxManager.No = "Don't Save";
+                MessageBoxManager.Cancel = "Cancel";
+                MessageBoxManager.Register();
+
+
+                DialogResult newResult = MessageBox.Show("Do you want to save changes on " + lblTittle.Text.Substring(0, lblTittle.Text.Length - 13).Remove(0, 1) + " ?", "DarkNotePad",
                     MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 if (newResult == DialogResult.No)
                 {
@@ -241,6 +255,7 @@ namespace DarkNotePad
                             path = sfd.FileName;
                             FileInfo fi = new FileInfo(sfd.FileName);
                             lblTittle.Text = fi.Name + " - DarkNotePad";
+                            _lblTittle = lblTittle;
                             using (StreamWriter sw = new StreamWriter(sfd.FileName))
                             {
                                 await sw.WriteAsync(txtBoxKryptonText.Text);
@@ -538,6 +553,16 @@ namespace DarkNotePad
             //    statusbarZoomState -= 10;
             //    toolStripStatusZoom.Text = "%" + statusbarZoomState;
             //}
+        }
+
+        private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.ZoomFactor += 0.1F;
+        }
+
+        private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.ZoomFactor -= 0.1F;
         }
     }
 }
