@@ -53,7 +53,6 @@ namespace DarkNotePad
             return false;
         }
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
             // this
@@ -65,6 +64,13 @@ namespace DarkNotePad
             rjBtnClose.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 7, 58);
             rjBtnHide.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
             rjBtnMaximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
+
+            // MessageBoxDialog
+            MessageBoxManager.Yes = "Save";
+            MessageBoxManager.No = "Don't Save";
+            MessageBoxManager.Cancel = "Cancel";
+            MessageBoxManager.Register();
+
 
             // Labels
             lblFind.Visible = false;
@@ -142,18 +148,14 @@ namespace DarkNotePad
         {
             if (IsSave())
             {
-                MessageBoxManager.Yes = "Save";
-                MessageBoxManager.No = "Don't Save";
-                MessageBoxManager.Cancel = "Cancel";
-                MessageBoxManager.Register();
-
                 result = MessageBox.Show("Do you want to save changes on " + lblTittle.Text.Substring(0, lblTittle.Text.Length - 13).Remove(0, 1) + " ?", "DarkNotePad",
                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
 
-
-
                 if (result == DialogResult.Yes)
+                {
+                    saveToolStripMenuItem_Click(null, null);
                     Application.Exit();
+                }
                 else if (result == DialogResult.No)
                     Application.Exit();
             }
@@ -193,12 +195,6 @@ namespace DarkNotePad
         {
             if (IsSave())
             {
-                MessageBoxManager.Yes = "Save";
-                MessageBoxManager.No = "Don't Save";
-                MessageBoxManager.Cancel = "Cancel";
-                MessageBoxManager.Register();
-
-
                 DialogResult newResult = MessageBox.Show("Do you want to save changes on " + lblTittle.Text.Substring(0, lblTittle.Text.Length - 13).Remove(0, 1) + " ?", "DarkNotePad",
                     MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 if (newResult == DialogResult.No)
@@ -229,6 +225,7 @@ namespace DarkNotePad
                             Task<string> text = sr.ReadToEndAsync();
                             strMyOriginalText = text.Result.Replace("\r", "");
                             txtBoxKryptonText.Text = text.Result;
+                            isChanged = true;
                         }
 
                     }
@@ -557,12 +554,12 @@ namespace DarkNotePad
 
         private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            txtBoxKryptonText.ZoomFactor += 0.1F;
+            //txtBoxKryptonText.ZoomFactor += 0.1F;
         }
 
         private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            txtBoxKryptonText.ZoomFactor -= 0.1F;
+            //txtBoxKryptonText.ZoomFactor -= 0.1F;
         }
     }
 }

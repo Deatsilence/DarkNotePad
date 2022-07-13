@@ -393,7 +393,7 @@ namespace DarkNotePad
             this.zoomOutToolStripMenuItem,
             this.restoreDefaultZoomToolStripMenuItem});
             this.zoomToolStripMenuItem.Name = "zoomToolStripMenuItem";
-            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zoomToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.zoomToolStripMenuItem.Text = "Zoom";
             // 
             // zoomInToolStripMenuItem
@@ -418,7 +418,7 @@ namespace DarkNotePad
             // 
             this.restoreDefaultZoomToolStripMenuItem.Name = "restoreDefaultZoomToolStripMenuItem";
             this.restoreDefaultZoomToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D0)));
-            this.restoreDefaultZoomToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.restoreDefaultZoomToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.restoreDefaultZoomToolStripMenuItem.Text = "Restore Default Zoom";
             this.restoreDefaultZoomToolStripMenuItem.Click += new System.EventHandler(this.restoreDefaultZoomToolStripMenuItem_Click);
             // 
@@ -426,7 +426,7 @@ namespace DarkNotePad
             // 
             this.statusBarToolStripMenuItem.CheckOnClick = true;
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.statusBarToolStripMenuItem.Text = "Status Bar";
             this.statusBarToolStripMenuItem.CheckedChanged += new System.EventHandler(this.statusBarToolStripMenuItem_CheckedChanged);
             // 
@@ -443,7 +443,7 @@ namespace DarkNotePad
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -578,9 +578,11 @@ namespace DarkNotePad
             // 
             // statusBar
             // 
+            this.statusBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.statusBar.AutoSize = false;
             this.statusBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
             this.statusBar.Dock = System.Windows.Forms.DockStyle.None;
+            this.statusBar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusSpace,
             this.toolStripStatusLineCol,
