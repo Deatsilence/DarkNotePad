@@ -13,6 +13,7 @@ using RJControls.RJConpanents;
 using RJControls;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Drawing.Drawing2D;
 
 namespace DarkNotePad
 {
@@ -33,9 +34,15 @@ namespace DarkNotePad
         // Default zoom
         float statusbarZoomState = 100;
         // FindCounter
-        static bool findCounter = false;
-        // LblTittle
-        public static Label _lblTittle;
+        static bool findCounter = true;
+        // isShowingStatusBar
+        static bool isShowingStatusBar = true;
+        // WordWrap
+        static bool isCheckecWordWrap = true;
+        // Open With
+        string[] openedPaths = Environment.GetCommandLineArgs();
+        // Opened File Path
+        string filePath;
 
         // Constructor
         public NotePadPage()
@@ -43,6 +50,13 @@ namespace DarkNotePad
             InitializeComponent();
             strMyOriginalText = txtBoxKryptonText.Text;
             this.menuStripNotePad.Renderer = new MyRenderer();
+
+            if (openedPaths.Length > 1)
+            {
+                string[] fileName = Environment.GetCommandLineArgs()[1].Split('\\');
+                filePath = Environment.GetCommandLineArgs()[1];
+                lblTittle.Text = fileName[fileName.Length - 1].ToString() + " - DarkNotePad";
+            }
         }
 
         // is it same ?
@@ -70,7 +84,6 @@ namespace DarkNotePad
             MessageBoxManager.No = "Don't Save";
             MessageBoxManager.Cancel = "Cancel";
             MessageBoxManager.Register();
-
 
             // Labels
             lblFind.Visible = false;
@@ -103,6 +116,7 @@ namespace DarkNotePad
             // Statusbar
             toolStripStatusZoom.Text = "%" + statusbarZoomState;
 
+
             // MenuStripItems
             cutToolStripMenuItem.Enabled = false;
             foreach (ToolStripMenuItem menuItem in menuStripNotePad.Items)
@@ -118,6 +132,9 @@ namespace DarkNotePad
                     item.DropDown.ForeColor = Color.FromArgb(225, 225, 225);
                 }
             }
+            ((ToolStripDropDownMenu)FormatToolStripMenuItem.DropDown).ShowImageMargin = true;
+            ((ToolStripDropDownMenu)ViewToolStripMenuItem.DropDown).ShowImageMargin = true;
+
         }
         private void NotePadPage_MouseDown(object sender, MouseEventArgs e)
         {
@@ -227,7 +244,6 @@ namespace DarkNotePad
                             txtBoxKryptonText.Text = text.Result;
                             isChanged = true;
                         }
-
                     }
                     catch (Exception ex)
                     {
@@ -252,7 +268,6 @@ namespace DarkNotePad
                             path = sfd.FileName;
                             FileInfo fi = new FileInfo(sfd.FileName);
                             lblTittle.Text = fi.Name + " - DarkNotePad";
-                            _lblTittle = lblTittle;
                             using (StreamWriter sw = new StreamWriter(sfd.FileName))
                             {
                                 await sw.WriteAsync(txtBoxKryptonText.Text);
@@ -323,6 +338,16 @@ namespace DarkNotePad
                     e.ArrowColor = Color.White;
                 base.OnRenderArrow(e);
             }
+            protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs e)
+            {
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                var r = new Rectangle(e.ImageRectangle.Location, e.ImageRectangle.Size);
+                r.Inflate(-4, -6);
+                e.Graphics.DrawLines(Pens.White, new Point[]{
+                    new Point(r.Left, r.Bottom - r.Height /2),
+                    new Point(r.Left + r.Width /3,  r.Bottom),
+                    new Point(r.Right, r.Top)});
+            }
         }
         private class MyColors : ProfessionalColorTable
         {
@@ -352,6 +377,22 @@ namespace DarkNotePad
                 get { return Color.FromArgb(31, 31, 46); }
             }
             public override Color MenuBorder
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
+            public override Color ImageMarginGradientBegin
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
+            public override Color ImageMarginGradientEnd
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
+            public override Color ImageMarginGradientMiddle
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
+            public override Color MenuItemBorder
             {
                 get { return Color.FromArgb(31, 31, 46); }
             }
@@ -479,11 +520,17 @@ namespace DarkNotePad
             {
                 txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(252, 250, 250);
                 txtBoxKryptonText.StateActive.Content.Color1 = Color.Black;
+                statusBar.BackColor = Color.FromArgb(252, 250, 250);
+                toolStripStatusSpace.BackColor = Color.FromArgb(252, 250, 250);
+                txtBoxKryptonText.Focus();
             }
             else
             {
                 txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
                 txtBoxKryptonText.StateActive.Content.Color1 = Color.FromArgb(252, 250, 250);
+                statusBar.BackColor = Color.FromArgb(52, 56, 55);
+                toolStripStatusSpace.BackColor = Color.FromArgb(52, 56, 55);
+                txtBoxKryptonText.Focus();
             }
         }
 
@@ -524,15 +571,45 @@ namespace DarkNotePad
 
         private void wordToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
-            txtBoxKryptonText.WordWrap = wordToolStripMenuItem.Checked;
-            statusBarToolStripMenuItem.Enabled = !wordToolStripMenuItem.Checked;
-            statusBarToolStripMenuItem.Checked = true;
-            statusBar.Visible = statusBarToolStripMenuItem.Enabled;
+            if (isCheckecWordWrap)
+            {
+                txtBoxKryptonText.WordWrap = isCheckecWordWrap;
+                isCheckecWordWrap = false;
+            }
+            else
+            {
+                txtBoxKryptonText.WordWrap = isCheckecWordWrap;
+                isCheckecWordWrap = true;
+            }
         }
 
         private void statusBarToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
-            statusBar.Visible = statusBarToolStripMenuItem.Checked;
+            if (isShowingStatusBar)
+            {
+                statusBar.Visible = isShowingStatusBar;
+                isShowingStatusBar = false;
+            }
+            else
+            {
+                statusBar.Visible = isShowingStatusBar;
+                isShowingStatusBar = true;
+            }
+        }
+
+        private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.ZoomFactor += 0.1F;
+        }
+
+        private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.ZoomFactor -= 0.1F;
+        }
+
+        private void txtBoxKryptonText_MouseEnter(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.Focus();
         }
         private void txtBoxKryptonText_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -550,16 +627,6 @@ namespace DarkNotePad
             //    statusbarZoomState -= 10;
             //    toolStripStatusZoom.Text = "%" + statusbarZoomState;
             //}
-        }
-
-        private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //txtBoxKryptonText.ZoomFactor += 0.1F;
-        }
-
-        private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //txtBoxKryptonText.ZoomFactor -= 0.1F;
         }
     }
 }
