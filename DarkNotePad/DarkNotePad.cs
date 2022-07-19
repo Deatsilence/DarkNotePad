@@ -42,7 +42,7 @@ namespace DarkNotePad
         // Open With
         string[] openedPaths = Environment.GetCommandLineArgs();
         // Opened File Path
-        string filePath;
+        //string filePath;
 
         // Constructor
         public NotePadPage()
@@ -54,8 +54,13 @@ namespace DarkNotePad
             if (openedPaths.Length > 1)
             {
                 string[] fileName = Environment.GetCommandLineArgs()[1].Split('\\');
-                filePath = Environment.GetCommandLineArgs()[1];
+                path = Environment.GetCommandLineArgs()[1];
                 lblTittle.Text = fileName[fileName.Length - 1].ToString() + " - DarkNotePad";
+                strMyOriginalText = File.ReadAllText(path);
+
+                if (strMyOriginalText[strMyOriginalText.Length - 1] == '\n' && strMyOriginalText[strMyOriginalText.Length - 2] == '\r')
+                    strMyOriginalText = strMyOriginalText.Substring(0, strMyOriginalText.Length - 2);
+                isChanged = true;
             }
         }
 
@@ -95,7 +100,9 @@ namespace DarkNotePad
             txtBoxKryptonText.StateCommon.Content.Color1 = Color.FromArgb(250, 252, 252);
             txtBoxKryptonText.Text = string.Empty;
             defaultFont = txtBoxKryptonText.Font;
+            txtBoxKryptonText.Text = strMyOriginalText;
             txtBoxKryptonText.Focus();
+            txtBoxKryptonText.SelectionStart = txtBoxKryptonText.Text.Length;
 
             // Find Textbox
             txtBoxKryptonFindText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
@@ -219,6 +226,15 @@ namespace DarkNotePad
                     path = string.Empty;
                     txtBoxKryptonText.Clear();
                 }
+                else if (newResult == DialogResult.Yes)
+                {
+                    saveToolStripMenuItem_Click(null, null);
+                    txtBoxKryptonText.Clear();
+                    lblTittle.Text = "Untitled - DarkNotePad";
+                    path = string.Empty;
+                    isChanged = true;
+                    strMyOriginalText = txtBoxKryptonText.Text;
+                }
             }
             else
             {
@@ -240,8 +256,11 @@ namespace DarkNotePad
                             path = ofd.FileName;
                             lblTittle.Text = ofd.SafeFileName + " - DarkNotePad";
                             Task<string> text = sr.ReadToEndAsync();
-                            strMyOriginalText = text.Result.Replace("\r", "");
-                            txtBoxKryptonText.Text = text.Result;
+                            if (text.Result[text.Result.Length - 1] == '\n' && text.Result[text.Result.Length - 2] == '\r')
+                                strMyOriginalText = text.Result.Substring(0, text.Result.Length - 2);
+                            else
+                                strMyOriginalText = text.Result;
+                            txtBoxKryptonText.Text = strMyOriginalText;
                             isChanged = true;
                         }
                     }
@@ -252,7 +271,7 @@ namespace DarkNotePad
                 }
             }
             txtBoxKryptonText.Focus();
-            txtBoxKryptonText.SelectionStart = txtBoxKryptonText.Text.Length;
+            txtBoxKryptonText.SelectionStart = 0;
         }
 
         private async void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -312,6 +331,12 @@ namespace DarkNotePad
                         {
                             await sw.WriteAsync(txtBoxKryptonText.Text);
                         }
+                        FileInfo fi = new FileInfo(sfd.FileName);
+                        lblTittle.Text = fi.Name + " - DarkNotePad";
+                        strMyOriginalText = txtBoxKryptonText.Text;
+                        txtBoxKryptonText.Text = strMyOriginalText;
+                        isChanged = true;
+                        
                     }
                     catch (Exception ex)
                     {
