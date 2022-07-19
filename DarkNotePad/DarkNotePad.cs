@@ -64,6 +64,9 @@ namespace DarkNotePad
             }
         }
 
+        /// <summary>
+        /// Functions I Wrote 
+        /// </summary>
         // is it same ?
         bool IsSave()
         {
@@ -72,6 +75,18 @@ namespace DarkNotePad
             return false;
         }
 
+        private void UpdateStatus()
+        {
+            int position = txtBoxKryptonText.SelectionStart;
+            int line = txtBoxKryptonText.GetLineFromCharIndex(position) + 1;
+            int column = position - txtBoxKryptonText.GetFirstCharIndexOfCurrentLine() + 1;
+
+            toolStripStatusLineCol.Text = "Ln " + line + ", Col " + column;
+        }
+
+        /// <summary>
+        /// Application's Events Functions
+        /// </summary>
         private void Form1_Load(object sender, EventArgs e)
         {
             // this
@@ -186,6 +201,30 @@ namespace DarkNotePad
             else
                 Application.Exit();
         }
+        private void rjBtnHide_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void rjToggleBtnColor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rjToggleBtnColor.Checked)
+            {
+                txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(252, 250, 250);
+                txtBoxKryptonText.StateActive.Content.Color1 = Color.Black;
+                statusBar.BackColor = Color.FromArgb(252, 250, 250);
+                toolStripStatusSpace.BackColor = Color.FromArgb(252, 250, 250);
+                txtBoxKryptonText.Focus();
+            }
+            else
+            {
+                txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
+                txtBoxKryptonText.StateActive.Content.Color1 = Color.FromArgb(252, 250, 250);
+                statusBar.BackColor = Color.FromArgb(52, 56, 55);
+                toolStripStatusSpace.BackColor = Color.FromArgb(52, 56, 55);
+                txtBoxKryptonText.Focus();
+            }
+        }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -203,18 +242,15 @@ namespace DarkNotePad
             if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
-                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
+                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
             }
             else
             {
                 this.WindowState = FormWindowState.Normal;
-                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
+                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
             }
         }
-        private void rjBtnHide_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
+
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (IsSave())
@@ -336,7 +372,7 @@ namespace DarkNotePad
                         strMyOriginalText = txtBoxKryptonText.Text;
                         txtBoxKryptonText.Text = strMyOriginalText;
                         isChanged = true;
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -351,75 +387,6 @@ namespace DarkNotePad
             using (About frm = new About())
             {
                 frm.ShowDialog();
-            }
-        }
-        private class MyRenderer : ToolStripProfessionalRenderer
-        {
-            public MyRenderer() : base(new MyColors()) { }
-            protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
-            {
-                var tsMenuItem = e.Item as ToolStripMenuItem;
-                if (tsMenuItem != null)
-                    e.ArrowColor = Color.White;
-                base.OnRenderArrow(e);
-            }
-            protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs e)
-            {
-                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                var r = new Rectangle(e.ImageRectangle.Location, e.ImageRectangle.Size);
-                r.Inflate(-4, -6);
-                e.Graphics.DrawLines(Pens.White, new Point[]{
-                    new Point(r.Left, r.Bottom - r.Height /2),
-                    new Point(r.Left + r.Width /3,  r.Bottom),
-                    new Point(r.Right, r.Top)});
-            }
-        }
-        private class MyColors : ProfessionalColorTable
-        {
-            public MyColors()
-            {
-                base.UseSystemColors = false;
-            }
-            public override Color MenuItemSelected
-            {
-                // when the menu is selected
-                get { return Color.FromArgb(64, 64, 64); }
-            }
-            public override Color MenuItemSelectedGradientBegin
-            {
-                get { return Color.FromArgb(31, 31, 46); }
-            }
-            public override Color MenuItemSelectedGradientEnd
-            {
-                get { return Color.FromArgb(31, 31, 46); }
-            }
-            public override Color MenuItemPressedGradientBegin
-            {
-                get { return Color.FromArgb(31, 31, 46); }
-            }
-            public override Color MenuItemPressedGradientEnd
-            {
-                get { return Color.FromArgb(31, 31, 46); }
-            }
-            public override Color MenuBorder
-            {
-                get { return Color.FromArgb(31, 31, 46); }
-            }
-            public override Color ImageMarginGradientBegin
-            {
-                get { return Color.FromArgb(31, 31, 46); }
-            }
-            public override Color ImageMarginGradientEnd
-            {
-                get { return Color.FromArgb(31, 31, 46); }
-            }
-            public override Color ImageMarginGradientMiddle
-            {
-                get { return Color.FromArgb(31, 31, 46); }
-            }
-            public override Color MenuItemBorder
-            {
-                get { return Color.FromArgb(31, 31, 46); }
             }
         }
 
@@ -444,17 +411,6 @@ namespace DarkNotePad
             }
         }
 
-        private void reUndoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            txtBoxKryptonText.Redo();
-        }
-
-        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtBoxKryptonText.SelectedText))
-                txtBoxKryptonText.Cut();
-        }
-
         private void txtBoxKryptonText_SelectionChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtBoxKryptonText.SelectedText))
@@ -464,13 +420,62 @@ namespace DarkNotePad
             UpdateStatus();
         }
 
-        private void UpdateStatus()
+        private void txtBoxKryptonText_MouseWheel(object sender, MouseEventArgs e)
         {
-            int position = txtBoxKryptonText.SelectionStart;
-            int line = txtBoxKryptonText.GetLineFromCharIndex(position) + 1;
-            int column = position - txtBoxKryptonText.GetFirstCharIndexOfCurrentLine() + 1;
+            //int mousedeltaval = e.Delta / 120;
 
-            toolStripStatusLineCol.Text = "Ln " + line + ", Col " + column;
+            //if (mousedeltaval == 1) //mousewheel up move
+            //{
+            //    txtBoxKryptonText.ZoomFactor += 0.1F;
+            //    statusbarZoomState += 10;
+            //    toolStripStatusZoom.Text = "%" + statusbarZoomState;
+            //}
+            //else if (mousedeltaval == -1) //mousewheel down move
+            //{
+            //    txtBoxKryptonText.ZoomFactor -= 0.1F;
+            //    statusbarZoomState -= 10;
+            //    toolStripStatusZoom.Text = "%" + statusbarZoomState;
+            //}
+        }
+
+        private void txtBoxKryptonFindText_TextChanged(object sender, EventArgs e)
+        {
+            int SummationFind = 0;
+            int index = 0;
+            string temp = txtBoxKryptonText.Text;
+            txtBoxKryptonText.Text = "";
+            txtBoxKryptonText.Text = temp;
+
+            if (txtBoxKryptonFindText.Text != string.Empty)
+            {
+                while (index < txtBoxKryptonText.Text.LastIndexOf(txtBoxKryptonFindText.Text))
+                {
+                    // Searches the text in a RichTextBox control for a string within a range of text withing the control
+                    txtBoxKryptonText.Find(txtBoxKryptonFindText.Text, index, txtBoxKryptonText.TextLength, RichTextBoxFinds.None);
+                    // Selection color. this is added automatically when a match is found
+                    txtBoxKryptonText.SelectionBackColor = Color.DarkOrange;
+                    // After a match is found the index is increased so the search won't stop at the same match again. this
+                    index = txtBoxKryptonText.Text.IndexOf(txtBoxKryptonFindText.Text, index, StringComparison.InvariantCultureIgnoreCase) + 1;
+                    SummationFind++;
+                }
+                lblIsThere.Text = string.Format("{0}", SummationFind);
+            }
+            else
+            {
+                SummationFind = 0;
+                lblIsThere.Text = string.Format("{0}", SummationFind);
+            }
+        }
+
+        private void reUndoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.Redo();
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBoxKryptonText.SelectedText))
+                txtBoxKryptonText.Cut();
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -539,60 +544,13 @@ namespace DarkNotePad
             }
         }
 
-        private void rjToggleBtnColor_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rjToggleBtnColor.Checked)
-            {
-                txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(252, 250, 250);
-                txtBoxKryptonText.StateActive.Content.Color1 = Color.Black;
-                statusBar.BackColor = Color.FromArgb(252, 250, 250);
-                toolStripStatusSpace.BackColor = Color.FromArgb(252, 250, 250);
-                txtBoxKryptonText.Focus();
-            }
-            else
-            {
-                txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
-                txtBoxKryptonText.StateActive.Content.Color1 = Color.FromArgb(252, 250, 250);
-                statusBar.BackColor = Color.FromArgb(52, 56, 55);
-                toolStripStatusSpace.BackColor = Color.FromArgb(52, 56, 55);
-                txtBoxKryptonText.Focus();
-            }
-        }
-
         private void restoreDefaultFontToolStripMenuItem_Click(object sender, EventArgs e)
         {
             txtBoxKryptonText.SelectAll();
             txtBoxKryptonText.SelectionFont = defaultFont;
         }
 
-        private void txtBoxKryptonFindText_TextChanged(object sender, EventArgs e)
-        {
-            int SummationFind = 0;
-            int index = 0;
-            string temp = txtBoxKryptonText.Text;
-            txtBoxKryptonText.Text = "";
-            txtBoxKryptonText.Text = temp;
 
-            if (txtBoxKryptonFindText.Text != string.Empty)
-            {
-                while (index < txtBoxKryptonText.Text.LastIndexOf(txtBoxKryptonFindText.Text))
-                {
-                    // Searches the text in a RichTextBox control for a string within a range of text withing the control
-                    txtBoxKryptonText.Find(txtBoxKryptonFindText.Text, index, txtBoxKryptonText.TextLength, RichTextBoxFinds.None);
-                    // Selection color. this is added automatically when a match is found
-                    txtBoxKryptonText.SelectionBackColor = Color.DarkOrange;
-                    // After a match is found the index is increased so the search won't stop at the same match again. this
-                    index = txtBoxKryptonText.Text.IndexOf(txtBoxKryptonFindText.Text, index, StringComparison.InvariantCultureIgnoreCase) + 1;
-                    SummationFind++;
-                }
-                lblIsThere.Text = string.Format("{0}", SummationFind);
-            }
-            else
-            {
-                SummationFind = 0;
-                lblIsThere.Text = string.Format("{0}", SummationFind);
-            }
-        }
 
         private void wordToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
@@ -636,22 +594,77 @@ namespace DarkNotePad
         {
             txtBoxKryptonText.Focus();
         }
-        private void txtBoxKryptonText_MouseWheel(object sender, MouseEventArgs e)
-        {
-            //int mousedeltaval = e.Delta / 120;
 
-            //if (mousedeltaval == 1) //mousewheel up move
-            //{
-            //    txtBoxKryptonText.ZoomFactor += 0.1F;
-            //    statusbarZoomState += 10;
-            //    toolStripStatusZoom.Text = "%" + statusbarZoomState;
-            //}
-            //else if (mousedeltaval == -1) //mousewheel down move
-            //{
-            //    txtBoxKryptonText.ZoomFactor -= 0.1F;
-            //    statusbarZoomState -= 10;
-            //    toolStripStatusZoom.Text = "%" + statusbarZoomState;
-            //}
+        
+        // For MenuStrip Properties
+        private class MyRenderer : ToolStripProfessionalRenderer
+        {
+            public MyRenderer() : base(new MyColors()) { }
+            protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
+            {
+                var tsMenuItem = e.Item as ToolStripMenuItem;
+                if (tsMenuItem != null)
+                    e.ArrowColor = Color.White;
+                base.OnRenderArrow(e);
+            }
+            protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs e)
+            {
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                var r = new Rectangle(e.ImageRectangle.Location, e.ImageRectangle.Size);
+                r.Inflate(-4, -6);
+                e.Graphics.DrawLines(Pens.White, new Point[]{
+                    new Point(r.Left, r.Bottom - r.Height /2),
+                    new Point(r.Left + r.Width /3,  r.Bottom),
+                    new Point(r.Right, r.Top)});
+            }
+        }
+        private class MyColors : ProfessionalColorTable
+        {
+            public MyColors()
+            {
+                base.UseSystemColors = false;
+            }
+            public override Color MenuItemSelected
+            {
+                // when the menu is selected
+                get { return Color.FromArgb(64, 64, 64); }
+            }
+            public override Color MenuItemSelectedGradientBegin
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
+            public override Color MenuItemSelectedGradientEnd
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
+            public override Color MenuItemPressedGradientBegin
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
+            public override Color MenuItemPressedGradientEnd
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
+            public override Color MenuBorder
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
+            public override Color ImageMarginGradientBegin
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
+            public override Color ImageMarginGradientEnd
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
+            public override Color ImageMarginGradientMiddle
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
+            public override Color MenuItemBorder
+            {
+                get { return Color.FromArgb(31, 31, 46); }
+            }
         }
     }
 }
