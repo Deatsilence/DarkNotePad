@@ -60,6 +60,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Desktop\Conpanents\Krypton-master\Bin\ComponentFactory.Krypton.Workspace.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="RJControls">
       <HintPath>..\..\..\..\Desktop\Conpanents\RJControls.dll</HintPath>
     </Reference>

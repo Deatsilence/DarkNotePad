@@ -41,8 +41,6 @@ namespace DarkNotePad
         static bool isCheckecWordWrap = true;
         // Open With
         string[] openedPaths = Environment.GetCommandLineArgs();
-        // Opened File Path
-        //string filePath;
 
         // Constructor
         public NotePadPage()
@@ -74,7 +72,10 @@ namespace DarkNotePad
                 return true;
             return false;
         }
-
+        bool IsPressedCtrl()
+        {
+            return (Control.ModifierKeys & Keys.Control) == Keys.Control;
+        }
         private void UpdateStatus()
         {
             int position = txtBoxKryptonText.SelectionStart;
@@ -158,6 +159,7 @@ namespace DarkNotePad
             ((ToolStripDropDownMenu)ViewToolStripMenuItem.DropDown).ShowImageMargin = true;
 
         }
+
         private void NotePadPage_MouseDown(object sender, MouseEventArgs e)
         {
             formMoving = true;
@@ -274,8 +276,11 @@ namespace DarkNotePad
             }
             else
             {
-                path = string.Empty;
                 txtBoxKryptonText.Clear();
+                lblTittle.Text = "Untitled - DarkNotePad";
+                path = string.Empty;
+                isChanged = true;
+                strMyOriginalText = txtBoxKryptonText.Text;
             }
         }
 
@@ -395,6 +400,11 @@ namespace DarkNotePad
             txtBoxKryptonText.Undo();
         }
 
+        private void txtBoxKryptonText_MouseEnter(object sender, EventArgs e)
+        {
+            txtBoxKryptonText.Focus();
+        }
+
         private void txtBoxKryptonText_TextChanged(object sender, EventArgs e)
         {
 
@@ -420,22 +430,28 @@ namespace DarkNotePad
             UpdateStatus();
         }
 
+
         private void txtBoxKryptonText_MouseWheel(object sender, MouseEventArgs e)
         {
-            //int mousedeltaval = e.Delta / 120;
+            if (IsPressedCtrl())
+            {
+                int mousedeltaval = e.Delta / 120;
 
-            //if (mousedeltaval == 1) //mousewheel up move
-            //{
-            //    txtBoxKryptonText.ZoomFactor += 0.1F;
-            //    statusbarZoomState += 10;
-            //    toolStripStatusZoom.Text = "%" + statusbarZoomState;
-            //}
-            //else if (mousedeltaval == -1) //mousewheel down move
-            //{
-            //    txtBoxKryptonText.ZoomFactor -= 0.1F;
-            //    statusbarZoomState -= 10;
-            //    toolStripStatusZoom.Text = "%" + statusbarZoomState;
-            //}
+                if (mousedeltaval == 1 && statusbarZoomState < 500) //mousewheel up move
+                {
+                    txtBoxKryptonText.ZoomFactor += 0.1F;
+                    statusbarZoomState += 10;
+                    txtBoxKryptonText.ZoomFactor -= 0.1F;
+                    toolStripStatusZoom.Text = "%" + statusbarZoomState;
+                }
+                else if (mousedeltaval == -1 && statusbarZoomState > 10) //mousewheel down move
+                {
+                    txtBoxKryptonText.ZoomFactor -= 0.1F;
+                    statusbarZoomState -= 10;
+                    txtBoxKryptonText.ZoomFactor += 0.1F;
+                    toolStripStatusZoom.Text = "%" + statusbarZoomState;
+                }
+            }
         }
 
         private void txtBoxKryptonFindText_TextChanged(object sender, EventArgs e)
@@ -590,12 +606,6 @@ namespace DarkNotePad
             txtBoxKryptonText.ZoomFactor -= 0.1F;
         }
 
-        private void txtBoxKryptonText_MouseEnter(object sender, EventArgs e)
-        {
-            txtBoxKryptonText.Focus();
-        }
-
-        
         // For MenuStrip Properties
         private class MyRenderer : ToolStripProfessionalRenderer
         {
