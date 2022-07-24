@@ -92,10 +92,10 @@ namespace DarkNotePad
         {
             // this
             this.MinimumSize = this.Size;
-            this.BackColor = Color.FromArgb(31, 59, 77);
+            this.BackColor = Color.FromArgb(30, 33, 32);
 
             // Form Buttons
-            rjBtnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 7, 58);
+            rjBtnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(196, 43, 28);
             rjBtnClose.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 7, 58);
             rjBtnHide.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
             rjBtnMaximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
@@ -138,25 +138,31 @@ namespace DarkNotePad
 
             // Statusbar
             toolStripStatusZoom.Text = "%" + statusbarZoomState;
+            toolStripStatusSpace.BackColor = ColorTranslator.FromHtml("#191B1C");
+            statusBar.BackColor = ColorTranslator.FromHtml("#191B1C");
+            statusBar.Visible = true;
+
 
 
             // MenuStripItems
-            cutToolStripMenuItem.Enabled = false;
             foreach (ToolStripMenuItem menuItem in menuStripNotePad.Items)
             {
                 ((ToolStripDropDownMenu)menuItem.DropDown).ShowImageMargin = false;
-                menuItem.DropDown.BackColor = Color.FromArgb(31, 31, 46);
+                menuItem.DropDown.BackColor = Color.FromArgb(30, 33, 32);
                 menuItem.DropDown.ForeColor = Color.FromArgb(225, 225, 225);
+                menuItem.BackColor = Color.FromArgb(30, 33, 32);
 
                 foreach (ToolStripMenuItem item in menuItem.DropDownItems)
                 {
                     ((ToolStripDropDownMenu)item.DropDown).ShowImageMargin = false;
-                    item.DropDown.BackColor = Color.FromArgb(31, 31, 46);
+                    item.DropDown.BackColor = Color.FromArgb(30, 33, 32);
                     item.DropDown.ForeColor = Color.FromArgb(225, 225, 225);
                 }
             }
             ((ToolStripDropDownMenu)FormatToolStripMenuItem.DropDown).ShowImageMargin = true;
             ((ToolStripDropDownMenu)ViewToolStripMenuItem.DropDown).ShowImageMargin = true;
+            statusBarToolStripMenuItem.Checked = true;
+            cutToolStripMenuItem.Enabled = false;
 
         }
 
@@ -212,16 +218,16 @@ namespace DarkNotePad
         {
             if (rjToggleBtnColor.Checked)
             {
-                txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(252, 250, 250);
+                txtBoxKryptonText.StateCommon.Back.Color1 = Color.WhiteSmoke;
                 txtBoxKryptonText.StateActive.Content.Color1 = Color.Black;
-                statusBar.BackColor = Color.FromArgb(252, 250, 250);
-                toolStripStatusSpace.BackColor = Color.FromArgb(252, 250, 250);
+                statusBar.BackColor = Color.WhiteSmoke;
+                toolStripStatusSpace.BackColor = Color.WhiteSmoke;
                 txtBoxKryptonText.Focus();
             }
             else
             {
                 txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
-                txtBoxKryptonText.StateActive.Content.Color1 = Color.FromArgb(252, 250, 250);
+                txtBoxKryptonText.StateActive.Content.Color1 = Color.WhiteSmoke;
                 statusBar.BackColor = Color.FromArgb(52, 56, 55);
                 toolStripStatusSpace.BackColor = Color.FromArgb(52, 56, 55);
                 txtBoxKryptonText.Focus();
@@ -566,8 +572,6 @@ namespace DarkNotePad
             txtBoxKryptonText.SelectionFont = defaultFont;
         }
 
-
-
         private void wordToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
             if (isCheckecWordWrap)
@@ -587,12 +591,15 @@ namespace DarkNotePad
             if (isShowingStatusBar)
             {
                 statusBar.Visible = isShowingStatusBar;
+                txtBoxKryptonText.Size = new Size(834, 404);
                 isShowingStatusBar = false;
             }
             else
             {
                 statusBar.Visible = isShowingStatusBar;
                 isShowingStatusBar = true;
+                txtBoxKryptonText.Location = new Point(0, 73);
+                txtBoxKryptonText.Size = new Size(834, 429);
             }
         }
 
@@ -637,43 +644,43 @@ namespace DarkNotePad
             public override Color MenuItemSelected
             {
                 // when the menu is selected
-                get { return Color.FromArgb(64, 64, 64); }
+                get { return Color.FromArgb(52, 56, 55); }
             }
             public override Color MenuItemSelectedGradientBegin
             {
-                get { return Color.FromArgb(31, 31, 46); }
+                get { return Color.FromArgb(52, 56, 55); }
             }
             public override Color MenuItemSelectedGradientEnd
             {
-                get { return Color.FromArgb(31, 31, 46); }
+                get { return Color.FromArgb(52, 56, 55); }
             }
             public override Color MenuItemPressedGradientBegin
             {
-                get { return Color.FromArgb(31, 31, 46); }
+                get { return Color.FromArgb(52, 56, 55); }
             }
             public override Color MenuItemPressedGradientEnd
             {
-                get { return Color.FromArgb(31, 31, 46); }
+                get { return Color.FromArgb(52, 56, 55); }
             }
             public override Color MenuBorder
             {
-                get { return Color.FromArgb(31, 31, 46); }
+                get { return Color.FromArgb(30, 33, 32); }
             }
             public override Color ImageMarginGradientBegin
             {
-                get { return Color.FromArgb(31, 31, 46); }
+                get { return Color.FromArgb(30, 33, 32); }
             }
             public override Color ImageMarginGradientEnd
             {
-                get { return Color.FromArgb(31, 31, 46); }
+                get { return Color.FromArgb(30, 33, 32); }
             }
             public override Color ImageMarginGradientMiddle
             {
-                get { return Color.FromArgb(31, 31, 46); }
+                get { return Color.FromArgb(30, 33, 32); }
             }
             public override Color MenuItemBorder
             {
-                get { return Color.FromArgb(31, 31, 46); }
+                get { return Color.FromArgb(30, 33, 32); }
             }
         }
     }
