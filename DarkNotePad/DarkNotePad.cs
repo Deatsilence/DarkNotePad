@@ -96,7 +96,7 @@ namespace DarkNotePad
 
             // Form Buttons
             rjBtnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(196, 43, 28);
-            rjBtnClose.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 7, 58);
+            rjBtnClose.FlatAppearance.MouseDownBackColor = Color.FromArgb(196, 43, 28);
             rjBtnHide.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
             rjBtnMaximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
 
@@ -137,8 +137,13 @@ namespace DarkNotePad
             statusBar.Visible = statusBarToolStripMenuItem.Checked;
 
             // Statusbar
-            toolStripStatusZoom.Text = "%" + statusbarZoomState;
+            toolStripStatusLineCol.ForeColor = Color.WhiteSmoke;
+            toolStripStatusSpace.ForeColor = Color.WhiteSmoke;
             toolStripStatusSpace.BackColor = ColorTranslator.FromHtml("#191B1C");
+            toolStripStatusZoom.ForeColor = Color.WhiteSmoke;
+            toolStripStatusZoom.Text = "%" + statusbarZoomState;
+            toolStripStatusCRLF.ForeColor = Color.WhiteSmoke;
+            toolStripStatusUTF.ForeColor = Color.WhiteSmoke;
             statusBar.BackColor = ColorTranslator.FromHtml("#191B1C");
             statusBar.Visible = true;
 
@@ -165,7 +170,10 @@ namespace DarkNotePad
             cutToolStripMenuItem.Enabled = false;
 
         }
-
+        private void NotePadPage_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+        }
         private void NotePadPage_MouseDown(object sender, MouseEventArgs e)
         {
             formMoving = true;
@@ -182,14 +190,6 @@ namespace DarkNotePad
                 Point p = PointToScreen(e.Location);
                 Location = new Point(p.X - this.startPoint.X, p.Y - this.startPoint.Y);
             }
-        }
-        private void rjBtnClose_MouseEnter(object sender, EventArgs e)
-        {
-            rjBtnClose.Image = Properties.Resources.closewhite;
-        }
-        private void rjBtnClose_MouseLeave(object sender, EventArgs e)
-        {
-            rjBtnClose.Image = Properties.Resources.closedark;
         }
         private void rjBtnClose_Click(object sender, EventArgs e)
         {
@@ -220,16 +220,12 @@ namespace DarkNotePad
             {
                 txtBoxKryptonText.StateCommon.Back.Color1 = Color.WhiteSmoke;
                 txtBoxKryptonText.StateActive.Content.Color1 = Color.Black;
-                statusBar.BackColor = Color.WhiteSmoke;
-                toolStripStatusSpace.BackColor = Color.WhiteSmoke;
                 txtBoxKryptonText.Focus();
             }
             else
             {
                 txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
                 txtBoxKryptonText.StateActive.Content.Color1 = Color.WhiteSmoke;
-                statusBar.BackColor = Color.FromArgb(52, 56, 55);
-                toolStripStatusSpace.BackColor = Color.FromArgb(52, 56, 55);
                 txtBoxKryptonText.Focus();
             }
         }
@@ -534,7 +530,7 @@ namespace DarkNotePad
         {
             using (FontDialog font = new FontDialog())
             {
-                if (font.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(txtBoxKryptonText.Text))
+                if (font.ShowDialog() == DialogResult.OK/*string.IsNullOrEmpty(txtBoxKryptonText.Text)*/)
                 {
                     txtBoxKryptonText.SelectAll();
                     txtBoxKryptonText.SelectionFont = font.Font;

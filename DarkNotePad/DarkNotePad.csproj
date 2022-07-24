@@ -133,5 +133,8 @@
   <ItemGroup>
     <None Include="Resources\darknotepadimage.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximizeimage.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

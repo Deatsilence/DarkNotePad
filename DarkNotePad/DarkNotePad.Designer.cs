@@ -32,7 +32,6 @@ namespace DarkNotePad
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotePadPage));
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
-            this.rjBtnHide = new RJControls.RJConpanents.RJButton();
             this.menuStripNotePad = new System.Windows.Forms.MenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,22 +61,25 @@ namespace DarkNotePad
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblTittle = new System.Windows.Forms.Label();
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
-            this.rjBtnMaximize = new RJControls.RJConpanents.RJButton();
-            this.rjBtnClose = new RJControls.RJConpanents.RJButton();
             this.rjToggleBtnColor = new RJControls.RJConpanents.RJToggleButton();
             this.txtBoxKryptonFindText = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.lblFind = new System.Windows.Forms.Label();
             this.lblIsThere = new System.Windows.Forms.Label();
             this.statusBar = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusSpace = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLineCol = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusZoom = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtBoxKryptonText = new ComponentFactory.Krypton.Toolkit.KryptonRichTextBox();
+            this.rjBtnClose = new RJControls.RJConpanents.RJButton();
+            this.rjBtnMaximize = new RJControls.RJConpanents.RJButton();
+            this.rjBtnHide = new RJControls.RJConpanents.RJButton();
+            this.lblTittle = new System.Windows.Forms.Label();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
+            this.toolStripStatusLineCol = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusSpace = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusCRLF = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusUTF = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStripNotePad.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.statusBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -119,32 +121,11 @@ namespace DarkNotePad
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.None;
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Rounding = 10;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(46)))));
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(46)))));
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonEdgeInset = 10;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
-            // 
-            // rjBtnHide
-            // 
-            this.rjBtnHide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rjBtnHide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
-            this.rjBtnHide.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
-            this.rjBtnHide.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjBtnHide.BorderRadius = 10;
-            this.rjBtnHide.BorderSize = 0;
-            this.rjBtnHide.FlatAppearance.BorderSize = 0;
-            this.rjBtnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjBtnHide.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.rjBtnHide.Location = new System.Drawing.Point(697, -2);
-            this.rjBtnHide.Name = "rjBtnHide";
-            this.rjBtnHide.Size = new System.Drawing.Size(46, 31);
-            this.rjBtnHide.TabIndex = 7;
-            this.rjBtnHide.Text = "__";
-            this.rjBtnHide.TextColor = System.Drawing.Color.WhiteSmoke;
-            this.rjBtnHide.UseVisualStyleBackColor = false;
-            this.rjBtnHide.Click += new System.EventHandler(this.rjBtnHide_Click);
             // 
             // menuStripNotePad
             // 
@@ -414,72 +395,6 @@ namespace DarkNotePad
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // lblTittle
-            // 
-            this.lblTittle.AutoSize = true;
-            this.lblTittle.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTittle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.lblTittle.Location = new System.Drawing.Point(42, 9);
-            this.lblTittle.Name = "lblTittle";
-            this.lblTittle.Size = new System.Drawing.Size(144, 22);
-            this.lblTittle.TabIndex = 10;
-            this.lblTittle.Text = "Untitled - DarkNotePad";
-            this.lblTittle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NotePadPage_MouseDown);
-            this.lblTittle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.NotePadPage_MouseMove);
-            this.lblTittle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotePadPage_MouseUp);
-            // 
-            // pictureBoxIcon
-            // 
-            this.pictureBoxIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxIcon.Image")));
-            this.pictureBoxIcon.Location = new System.Drawing.Point(12, 8);
-            this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxIcon.TabIndex = 11;
-            this.pictureBoxIcon.TabStop = false;
-            // 
-            // rjBtnMaximize
-            // 
-            this.rjBtnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rjBtnMaximize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
-            this.rjBtnMaximize.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
-            this.rjBtnMaximize.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjBtnMaximize.BorderRadius = 10;
-            this.rjBtnMaximize.BorderSize = 0;
-            this.rjBtnMaximize.FlatAppearance.BorderSize = 0;
-            this.rjBtnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjBtnMaximize.ForeColor = System.Drawing.Color.Black;
-            this.rjBtnMaximize.Image = ((System.Drawing.Image)(resources.GetObject("rjBtnMaximize.Image")));
-            this.rjBtnMaximize.Location = new System.Drawing.Point(743, -2);
-            this.rjBtnMaximize.Name = "rjBtnMaximize";
-            this.rjBtnMaximize.Size = new System.Drawing.Size(46, 31);
-            this.rjBtnMaximize.TabIndex = 6;
-            this.rjBtnMaximize.TextColor = System.Drawing.Color.Black;
-            this.rjBtnMaximize.UseVisualStyleBackColor = false;
-            this.rjBtnMaximize.Click += new System.EventHandler(this.rjBtnMaximize_Click);
-            // 
-            // rjBtnClose
-            // 
-            this.rjBtnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rjBtnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
-            this.rjBtnClose.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
-            this.rjBtnClose.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjBtnClose.BorderRadius = 10;
-            this.rjBtnClose.BorderSize = 0;
-            this.rjBtnClose.FlatAppearance.BorderSize = 0;
-            this.rjBtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjBtnClose.Font = new System.Drawing.Font("Poppins Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjBtnClose.ForeColor = System.Drawing.Color.Black;
-            this.rjBtnClose.Image = global::DarkNotePad.Properties.Resources.closewhite;
-            this.rjBtnClose.Location = new System.Drawing.Point(789, -2);
-            this.rjBtnClose.Name = "rjBtnClose";
-            this.rjBtnClose.Size = new System.Drawing.Size(46, 31);
-            this.rjBtnClose.TabIndex = 5;
-            this.rjBtnClose.TextColor = System.Drawing.Color.Black;
-            this.rjBtnClose.UseVisualStyleBackColor = false;
-            this.rjBtnClose.Click += new System.EventHandler(this.rjBtnClose_Click);
-            this.rjBtnClose.MouseEnter += new System.EventHandler(this.rjBtnClose_MouseEnter);
-            this.rjBtnClose.MouseLeave += new System.EventHandler(this.rjBtnClose_MouseLeave);
-            // 
             // rjToggleBtnColor
             // 
             this.rjToggleBtnColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -550,31 +465,17 @@ namespace DarkNotePad
             this.statusBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
             this.statusBar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusSpace,
             this.toolStripStatusLineCol,
-            this.toolStripStatusZoom});
+            this.toolStripStatusSpace,
+            this.toolStripStatusZoom,
+            this.toolStripStatusCRLF,
+            this.toolStripStatusUTF});
             this.statusBar.Location = new System.Drawing.Point(0, 477);
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(834, 25);
             this.statusBar.SizingGrip = false;
             this.statusBar.TabIndex = 16;
             this.statusBar.Text = "statusStrip1";
-            // 
-            // toolStripStatusSpace
-            // 
-            this.toolStripStatusSpace.AutoSize = false;
-            this.toolStripStatusSpace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
-            this.toolStripStatusSpace.Name = "toolStripStatusSpace";
-            this.toolStripStatusSpace.Size = new System.Drawing.Size(350, 20);
-            this.toolStripStatusSpace.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // toolStripStatusLineCol
-            // 
-            this.toolStripStatusLineCol.AutoSize = false;
-            this.toolStripStatusLineCol.Name = "toolStripStatusLineCol";
-            this.toolStripStatusLineCol.Size = new System.Drawing.Size(150, 20);
-            this.toolStripStatusLineCol.Text = "Ln 1, Col 1";
-            this.toolStripStatusLineCol.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // toolStripStatusZoom
             // 
@@ -617,6 +518,120 @@ namespace DarkNotePad
             this.txtBoxKryptonText.SelectionChanged += new System.EventHandler(this.txtBoxKryptonText_SelectionChanged);
             this.txtBoxKryptonText.TextChanged += new System.EventHandler(this.txtBoxKryptonText_TextChanged);
             this.txtBoxKryptonText.MouseEnter += new System.EventHandler(this.txtBoxKryptonText_MouseEnter);
+            this.txtBoxKryptonText.ContainedControl.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.txtBoxKryptonText_MouseWheel);
+            // 
+            // rjBtnClose
+            // 
+            this.rjBtnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rjBtnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
+            this.rjBtnClose.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
+            this.rjBtnClose.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjBtnClose.BorderRadius = 10;
+            this.rjBtnClose.BorderSize = 0;
+            this.rjBtnClose.FlatAppearance.BorderSize = 0;
+            this.rjBtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjBtnClose.Font = new System.Drawing.Font("Poppins Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjBtnClose.ForeColor = System.Drawing.Color.Black;
+            this.rjBtnClose.Image = global::DarkNotePad.Properties.Resources.closewhite;
+            this.rjBtnClose.Location = new System.Drawing.Point(789, -2);
+            this.rjBtnClose.Name = "rjBtnClose";
+            this.rjBtnClose.Size = new System.Drawing.Size(46, 31);
+            this.rjBtnClose.TabIndex = 5;
+            this.rjBtnClose.TextColor = System.Drawing.Color.Black;
+            this.rjBtnClose.UseVisualStyleBackColor = false;
+            this.rjBtnClose.Click += new System.EventHandler(this.rjBtnClose_Click);
+            // 
+            // rjBtnMaximize
+            // 
+            this.rjBtnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rjBtnMaximize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
+            this.rjBtnMaximize.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
+            this.rjBtnMaximize.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjBtnMaximize.BorderRadius = 10;
+            this.rjBtnMaximize.BorderSize = 0;
+            this.rjBtnMaximize.FlatAppearance.BorderSize = 0;
+            this.rjBtnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjBtnMaximize.ForeColor = System.Drawing.Color.Black;
+            this.rjBtnMaximize.Image = ((System.Drawing.Image)(resources.GetObject("rjBtnMaximize.Image")));
+            this.rjBtnMaximize.Location = new System.Drawing.Point(743, -2);
+            this.rjBtnMaximize.Name = "rjBtnMaximize";
+            this.rjBtnMaximize.Size = new System.Drawing.Size(46, 31);
+            this.rjBtnMaximize.TabIndex = 6;
+            this.rjBtnMaximize.TextColor = System.Drawing.Color.Black;
+            this.rjBtnMaximize.UseVisualStyleBackColor = false;
+            this.rjBtnMaximize.Click += new System.EventHandler(this.rjBtnMaximize_Click);
+            // 
+            // rjBtnHide
+            // 
+            this.rjBtnHide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rjBtnHide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
+            this.rjBtnHide.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
+            this.rjBtnHide.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjBtnHide.BorderRadius = 10;
+            this.rjBtnHide.BorderSize = 0;
+            this.rjBtnHide.FlatAppearance.BorderSize = 0;
+            this.rjBtnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjBtnHide.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.rjBtnHide.Location = new System.Drawing.Point(697, -2);
+            this.rjBtnHide.Name = "rjBtnHide";
+            this.rjBtnHide.Size = new System.Drawing.Size(46, 31);
+            this.rjBtnHide.TabIndex = 7;
+            this.rjBtnHide.Text = "__";
+            this.rjBtnHide.TextColor = System.Drawing.Color.WhiteSmoke;
+            this.rjBtnHide.UseVisualStyleBackColor = false;
+            this.rjBtnHide.Click += new System.EventHandler(this.rjBtnHide_Click);
+            // 
+            // lblTittle
+            // 
+            this.lblTittle.AutoSize = true;
+            this.lblTittle.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTittle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.lblTittle.Location = new System.Drawing.Point(42, 9);
+            this.lblTittle.Name = "lblTittle";
+            this.lblTittle.Size = new System.Drawing.Size(144, 22);
+            this.lblTittle.TabIndex = 10;
+            this.lblTittle.Text = "Untitled - DarkNotePad";
+            this.lblTittle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NotePadPage_MouseDown);
+            this.lblTittle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.NotePadPage_MouseMove);
+            this.lblTittle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotePadPage_MouseUp);
+            // 
+            // pictureBoxIcon
+            // 
+            this.pictureBoxIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxIcon.Image")));
+            this.pictureBoxIcon.Location = new System.Drawing.Point(12, 8);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxIcon.TabIndex = 11;
+            this.pictureBoxIcon.TabStop = false;
+            // 
+            // toolStripStatusLineCol
+            // 
+            this.toolStripStatusLineCol.AutoSize = false;
+            this.toolStripStatusLineCol.Name = "toolStripStatusLineCol";
+            this.toolStripStatusLineCol.Size = new System.Drawing.Size(150, 20);
+            this.toolStripStatusLineCol.Text = "Ln 1, Col 1";
+            this.toolStripStatusLineCol.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // toolStripStatusSpace
+            // 
+            this.toolStripStatusSpace.AutoSize = false;
+            this.toolStripStatusSpace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
+            this.toolStripStatusSpace.Name = "toolStripStatusSpace";
+            this.toolStripStatusSpace.Size = new System.Drawing.Size(350, 20);
+            this.toolStripStatusSpace.Text = "|";
+            this.toolStripStatusSpace.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripStatusCRLF
+            // 
+            this.toolStripStatusCRLF.Name = "toolStripStatusCRLF";
+            this.toolStripStatusCRLF.Size = new System.Drawing.Size(157, 20);
+            this.toolStripStatusCRLF.Text = "|  Windows (CRLF)                  ";
+            // 
+            // toolStripStatusUTF
+            // 
+            this.toolStripStatusUTF.Name = "toolStripStatusUTF";
+            this.toolStripStatusUTF.Size = new System.Drawing.Size(47, 20);
+            this.toolStripStatusUTF.Text = "|  UTF-8";
             // 
             // NotePadPage
             // 
@@ -647,32 +662,28 @@ namespace DarkNotePad
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.Text = "The Ultimate UI ToolKit";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.NotePadPage_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NotePadPage_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.NotePadPage_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotePadPage_MouseUp);
             this.menuStripNotePad.ResumeLayout(false);
             this.menuStripNotePad.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private RJControls.RJConpanents.RJButton rjBtnClose;
-        private RJControls.RJConpanents.RJButton rjBtnMaximize;
-        private RJControls.RJConpanents.RJButton rjBtnHide;
         private System.Windows.Forms.MenuStrip menuStripNotePad;
         private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem FormatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBoxIcon;
         private RJControls.RJConpanents.RJToggleButton rjToggleBtnColor;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -702,11 +713,17 @@ namespace DarkNotePad
         private System.Windows.Forms.Label lblFind;
         private System.Windows.Forms.Label lblIsThere;
         private System.Windows.Forms.StatusStrip statusBar;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusSpace;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLineCol;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusZoom;
-        public System.Windows.Forms.Label lblTittle;
         private ComponentFactory.Krypton.Toolkit.KryptonRichTextBox txtBoxKryptonText;
+        private RJControls.RJConpanents.RJButton rjBtnClose;
+        private RJControls.RJConpanents.RJButton rjBtnMaximize;
+        private RJControls.RJConpanents.RJButton rjBtnHide;
+        public System.Windows.Forms.Label lblTittle;
+        private System.Windows.Forms.PictureBox pictureBoxIcon;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLineCol;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusSpace;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusCRLF;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusUTF;
     }
 }
 
