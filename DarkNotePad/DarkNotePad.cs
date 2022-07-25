@@ -93,6 +93,7 @@ namespace DarkNotePad
             // this
             this.MinimumSize = this.Size;
             this.BackColor = Color.FromArgb(30, 33, 32);
+            this.Icon = Properties.Resources.darknotepadimgico;
 
             // Form Buttons
             rjBtnClose.FlatAppearance.MouseOverBackColor = Color.FromArgb(196, 43, 28);

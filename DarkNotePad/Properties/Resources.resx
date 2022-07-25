@@ -118,17 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="closedark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\closedark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="closewhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\closewhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="darknotepadimage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\darknotepadimage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="darknotepadimg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\darknotepadimg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="darknotepadimage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\darknotepadimage.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="darknotepadimgico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\darknotepadimg.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="maximizeimage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\maximizeimage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

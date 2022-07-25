@@ -63,16 +63,6 @@ namespace DarkNotePad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap closedark {
-            get {
-                object obj = ResourceManager.GetObject("closedark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap closewhite {
             get {
                 object obj = ResourceManager.GetObject("closewhite", resourceCulture);
@@ -83,9 +73,9 @@ namespace DarkNotePad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap darknotepadimage {
+        internal static System.Drawing.Bitmap darknotepadimg {
             get {
-                object obj = ResourceManager.GetObject("darknotepadimage", resourceCulture);
+                object obj = ResourceManager.GetObject("darknotepadimg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +83,9 @@ namespace DarkNotePad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon darknotepadimage1 {
+        internal static System.Drawing.Icon darknotepadimgico {
             get {
-                object obj = ResourceManager.GetObject("darknotepadimage1", resourceCulture);
+                object obj = ResourceManager.GetObject("darknotepadimgico", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

@@ -36,8 +36,7 @@
     <StartupObject>DarkNotePad.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>darknotepadimg.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Docking, Version=4.6.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
@@ -125,16 +124,16 @@
     <None Include="Resources\closewhite.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\closedark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\darknotepadimage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\darknotepadimage.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\maximizeimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\darknotepadimg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\darknotepadimg.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="darknotepadimg.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

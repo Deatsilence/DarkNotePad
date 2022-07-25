@@ -1,9 +1,3 @@
-C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.csproj.AssemblyReference.cache
-C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.About.resources
-C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.NotePadPage.resources
-C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.Properties.Resources.resources
-C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.csproj.GenerateResource.cache
-C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.csproj.CoreCompileInputs.cache
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\bin\Debug\DarkNotePad.exe.config
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\bin\Debug\DarkNotePad.exe
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\bin\Debug\DarkNotePad.pdb
@@ -18,6 +12,11 @@ C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\bin\Debug\ComponentFactory.K
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\bin\Debug\ComponentFactory.Krypton.Ribbon.pdb
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\bin\Debug\ComponentFactory.Krypton.Toolkit.pdb
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\bin\Debug\ComponentFactory.Krypton.Workspace.pdb
+C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.About.resources
+C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.NotePadPage.resources
+C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.Properties.Resources.resources
+C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.csproj.GenerateResource.cache
+C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.csproj.CoreCompileInputs.cache
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.csproj.CopyComplete
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.exe
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.pdb
