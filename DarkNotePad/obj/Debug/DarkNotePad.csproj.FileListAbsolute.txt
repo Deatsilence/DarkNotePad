@@ -20,3 +20,4 @@ C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.csproj
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.csproj.CopyComplete
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.exe
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.pdb
+C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.csproj.AssemblyReference.cache

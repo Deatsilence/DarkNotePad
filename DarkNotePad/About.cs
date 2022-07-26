@@ -22,13 +22,12 @@ namespace DarkNotePad
             lblProductName.Text = string.Format("Product Name: {0}", Application.ProductName);
             lblProductVersion.Text = string.Format("Version: {0}", Application.ProductVersion);
             lblCopyright.Text = string.Format("Product Copyright: {0}", "Copyright ©  2022 by MMDream");
+            lblForCommunication.Text = string.Format("For Communication: {0}", "companydirectsy@gmail.com");
         }
 
         private void rjBtnOk_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-
     }
 }

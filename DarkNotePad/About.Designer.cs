@@ -33,17 +33,18 @@ namespace DarkNotePad
             this.rjBtnOk = new RJControls.RJConpanents.RJButton();
             this.lblProductVersion = new System.Windows.Forms.Label();
             this.lblCopyright = new System.Windows.Forms.Label();
+            this.lblForCommunication = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblProductName
             // 
             this.lblProductName.AutoSize = true;
             this.lblProductName.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductName.Location = new System.Drawing.Point(25, 38);
+            this.lblProductName.Location = new System.Drawing.Point(25, 33);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(46, 23);
+            this.lblProductName.Size = new System.Drawing.Size(106, 23);
             this.lblProductName.TabIndex = 0;
-            this.lblProductName.Text = "label1";
+            this.lblProductName.Text = "Product Name:";
             // 
             // rjBtnOk
             // 
@@ -68,21 +69,31 @@ namespace DarkNotePad
             // 
             this.lblProductVersion.AutoSize = true;
             this.lblProductVersion.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductVersion.Location = new System.Drawing.Point(25, 65);
+            this.lblProductVersion.Location = new System.Drawing.Point(25, 58);
             this.lblProductVersion.Name = "lblProductVersion";
-            this.lblProductVersion.Size = new System.Drawing.Size(46, 23);
+            this.lblProductVersion.Size = new System.Drawing.Size(61, 23);
             this.lblProductVersion.TabIndex = 0;
-            this.lblProductVersion.Text = "label1";
+            this.lblProductVersion.Text = "Version:";
             // 
             // lblCopyright
             // 
             this.lblCopyright.AutoSize = true;
             this.lblCopyright.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCopyright.Location = new System.Drawing.Point(25, 92);
+            this.lblCopyright.Location = new System.Drawing.Point(25, 83);
             this.lblCopyright.Name = "lblCopyright";
-            this.lblCopyright.Size = new System.Drawing.Size(46, 23);
+            this.lblCopyright.Size = new System.Drawing.Size(128, 23);
             this.lblCopyright.TabIndex = 0;
-            this.lblCopyright.Text = "label1";
+            this.lblCopyright.Text = "Product Copyright";
+            // 
+            // lblForCommunication
+            // 
+            this.lblForCommunication.AutoSize = true;
+            this.lblForCommunication.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForCommunication.Location = new System.Drawing.Point(25, 108);
+            this.lblForCommunication.Name = "lblForCommunication";
+            this.lblForCommunication.Size = new System.Drawing.Size(140, 23);
+            this.lblForCommunication.TabIndex = 0;
+            this.lblForCommunication.Text = "For Communication:";
             // 
             // About
             // 
@@ -91,6 +102,7 @@ namespace DarkNotePad
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(397, 199);
             this.Controls.Add(this.rjBtnOk);
+            this.Controls.Add(this.lblForCommunication);
             this.Controls.Add(this.lblCopyright);
             this.Controls.Add(this.lblProductVersion);
             this.Controls.Add(this.lblProductName);
@@ -114,5 +126,6 @@ namespace DarkNotePad
         private RJControls.RJConpanents.RJButton rjBtnOk;
         private System.Windows.Forms.Label lblProductVersion;
         private System.Windows.Forms.Label lblCopyright;
+        private System.Windows.Forms.Label lblForCommunication;
     }
 }
