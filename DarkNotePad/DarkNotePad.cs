@@ -41,6 +41,9 @@ namespace DarkNotePad
         static bool isCheckecWordWrap = true;
         // Open With
         string[] openedPaths = Environment.GetCommandLineArgs();
+        // TaskBar Icon Click
+        const int WS_MINIMIZEBOX = 0x20000;
+        const int CS_DBLCLKS = 0x8;
 
         // Constructor
         public NotePadPage()
@@ -108,12 +111,14 @@ namespace DarkNotePad
             MessageBoxManager.Register();
 
             // Labels
-            lblFind.Visible = false;
             lblIsThere.Visible = false;
 
+            // PictureBox
+            pictureBoxFind.Visible = false;
+
             // rich Textbox
-            txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
-            txtBoxKryptonText.StateCommon.Border.Color1 = Color.FromArgb(52, 56, 55);
+            txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(39, 39, 39);
+            txtBoxKryptonText.StateCommon.Border.Color1 = Color.FromArgb(39, 39, 39);
             txtBoxKryptonText.StateCommon.Content.Color1 = Color.FromArgb(250, 252, 252);
             txtBoxKryptonText.Text = string.Empty;
             defaultFont = txtBoxKryptonText.Font;
@@ -171,6 +176,7 @@ namespace DarkNotePad
             cutToolStripMenuItem.Enabled = false;
 
         }
+
         private void NotePadPage_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
@@ -210,6 +216,19 @@ namespace DarkNotePad
             else
                 Application.Exit();
         }
+        private void rjBtnMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
+            }
+        }
         private void rjBtnHide_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -225,7 +244,7 @@ namespace DarkNotePad
             }
             else
             {
-                txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
+                txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(39, 39, 39);
                 txtBoxKryptonText.StateActive.Content.Color1 = Color.WhiteSmoke;
                 txtBoxKryptonText.Focus();
             }
@@ -241,20 +260,6 @@ namespace DarkNotePad
             int nWidthEllipse, // height of ellipse
             int nHeightEllipse // width of ellipse
         );
-
-        private void rjBtnMaximize_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
-            }
-        }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -550,14 +555,14 @@ namespace DarkNotePad
             if (findCounter)
             {
                 txtBoxKryptonFindText.Visible = findCounter;
-                lblFind.Visible = findCounter;
+                pictureBoxFind.Visible = findCounter;
                 lblIsThere.Visible = findCounter;
                 findCounter = false;
             }
             else
             {
                 txtBoxKryptonFindText.Visible = findCounter;
-                lblFind.Visible = findCounter;
+                pictureBoxFind.Visible = findCounter;
                 lblIsThere.Visible = findCounter;
                 findCounter = true;
             }
@@ -630,6 +635,16 @@ namespace DarkNotePad
                     new Point(r.Left, r.Bottom - r.Height /2),
                     new Point(r.Left + r.Width /3,  r.Bottom),
                     new Point(r.Right, r.Top)});
+            }
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= WS_MINIMIZEBOX;
+                cp.ClassStyle |= CS_DBLCLKS;
+                return cp;
             }
         }
         private class MyColors : ProfessionalColorTable

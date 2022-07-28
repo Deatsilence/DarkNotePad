@@ -63,7 +63,6 @@ namespace DarkNotePad
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rjToggleBtnColor = new RJControls.RJConpanents.RJToggleButton();
             this.txtBoxKryptonFindText = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.lblFind = new System.Windows.Forms.Label();
             this.lblIsThere = new System.Windows.Forms.Label();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLineCol = new System.Windows.Forms.ToolStripStatusLabel();
@@ -77,9 +76,11 @@ namespace DarkNotePad
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.rjBtnMaximize = new RJControls.RJConpanents.RJButton();
             this.rjBtnClose = new RJControls.RJConpanents.RJButton();
+            this.pictureBoxFind = new System.Windows.Forms.PictureBox();
             this.menuStripNotePad.SuspendLayout();
             this.statusBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFind)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -114,16 +115,16 @@ namespace DarkNotePad
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.kryptonPalette1.ButtonStyles.ButtonFormClose.StateTracking.Border.Width = 0;
-            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(46)))));
-            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(46)))));
-            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(46)))));
-            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(46)))));
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Rounding = 10;
-            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(46)))));
-            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(46)))));
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonEdgeInset = 10;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             // 
@@ -436,19 +437,6 @@ namespace DarkNotePad
             this.txtBoxKryptonFindText.TabIndex = 13;
             this.txtBoxKryptonFindText.TextChanged += new System.EventHandler(this.txtBoxKryptonFindText_TextChanged);
             // 
-            // lblFind
-            // 
-            this.lblFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblFind.AutoSize = true;
-            this.lblFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
-            this.lblFind.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFind.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.lblFind.Location = new System.Drawing.Point(301, 42);
-            this.lblFind.Name = "lblFind";
-            this.lblFind.Size = new System.Drawing.Size(40, 23);
-            this.lblFind.TabIndex = 14;
-            this.lblFind.Text = "Find:";
-            // 
             // lblIsThere
             // 
             this.lblIsThere.AutoSize = true;
@@ -462,7 +450,7 @@ namespace DarkNotePad
             // statusBar
             // 
             this.statusBar.AutoSize = false;
-            this.statusBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
+            this.statusBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
             this.statusBar.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLineCol,
@@ -488,7 +476,7 @@ namespace DarkNotePad
             // toolStripStatusSpace
             // 
             this.toolStripStatusSpace.AutoSize = false;
-            this.toolStripStatusSpace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
+            this.toolStripStatusSpace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
             this.toolStripStatusSpace.Name = "toolStripStatusSpace";
             this.toolStripStatusSpace.Size = new System.Drawing.Size(350, 20);
             this.toolStripStatusSpace.Text = "|";
@@ -526,8 +514,8 @@ namespace DarkNotePad
             this.txtBoxKryptonText.StateActive.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txtBoxKryptonText.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
-            this.txtBoxKryptonText.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(56)))), ((int)(((byte)(55)))));
+            this.txtBoxKryptonText.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.txtBoxKryptonText.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
             this.txtBoxKryptonText.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -632,6 +620,15 @@ namespace DarkNotePad
             this.rjBtnClose.UseVisualStyleBackColor = false;
             this.rjBtnClose.Click += new System.EventHandler(this.rjBtnClose_Click);
             // 
+            // pictureBoxFind
+            // 
+            this.pictureBoxFind.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxFind.Image")));
+            this.pictureBoxFind.Location = new System.Drawing.Point(302, 38);
+            this.pictureBoxFind.Name = "pictureBoxFind";
+            this.pictureBoxFind.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxFind.TabIndex = 11;
+            this.pictureBoxFind.TabStop = false;
+            // 
             // NotePadPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -640,9 +637,9 @@ namespace DarkNotePad
             this.ClientSize = new System.Drawing.Size(834, 502);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.lblIsThere);
-            this.Controls.Add(this.lblFind);
             this.Controls.Add(this.txtBoxKryptonFindText);
             this.Controls.Add(this.rjToggleBtnColor);
+            this.Controls.Add(this.pictureBoxFind);
             this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.lblTittle);
             this.Controls.Add(this.txtBoxKryptonText);
@@ -662,6 +659,7 @@ namespace DarkNotePad
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.NotePadPage_Paint);
+            this.DoubleClick += new System.EventHandler(this.rjBtnMaximize_Click);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NotePadPage_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.NotePadPage_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotePadPage_MouseUp);
@@ -670,6 +668,7 @@ namespace DarkNotePad
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFind)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -708,7 +707,6 @@ namespace DarkNotePad
         private System.Windows.Forms.ToolStripMenuItem restoreDefaultFontToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wordToolStripMenuItem;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtBoxKryptonFindText;
-        private System.Windows.Forms.Label lblFind;
         private System.Windows.Forms.Label lblIsThere;
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusZoom;
@@ -722,6 +720,7 @@ namespace DarkNotePad
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusSpace;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusCRLF;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusUTF;
+        private System.Windows.Forms.PictureBox pictureBoxFind;
     }
 }
 
