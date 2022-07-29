@@ -45,6 +45,7 @@ namespace DarkNotePad
         const int WS_MINIMIZEBOX = 0x20000;
         const int CS_DBLCLKS = 0x8;
 
+
         // Constructor
         public NotePadPage()
         {

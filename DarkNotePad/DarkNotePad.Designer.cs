@@ -631,8 +631,7 @@ namespace DarkNotePad
             // 
             // NotePadPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(834, 502);
             this.Controls.Add(this.statusBar);
