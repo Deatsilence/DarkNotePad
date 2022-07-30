@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="darknotepadimg.ico" />
+    <None Include="Resources\search24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
