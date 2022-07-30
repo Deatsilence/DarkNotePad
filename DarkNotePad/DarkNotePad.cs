@@ -14,6 +14,7 @@ using RJControls;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Drawing.Drawing2D;
+using System.Text.RegularExpressions;
 
 namespace DarkNotePad
 {
@@ -65,6 +66,7 @@ namespace DarkNotePad
                 isChanged = true;
             }
         }
+
 
         /// <summary>
         /// Functions I Wrote 
@@ -126,6 +128,7 @@ namespace DarkNotePad
             txtBoxKryptonText.Text = strMyOriginalText;
             txtBoxKryptonText.Focus();
             txtBoxKryptonText.SelectionStart = txtBoxKryptonText.Text.Length;
+
 
             // Find Textbox
             txtBoxKryptonFindText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
@@ -413,7 +416,14 @@ namespace DarkNotePad
         {
             txtBoxKryptonText.Focus();
         }
-
+        private void txtBoxKryptonText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                txtBoxKryptonText.Text += (string)System.Windows.Clipboard.GetData("Text");
+                e.Handled = true;
+            }
+        }
         private void txtBoxKryptonText_TextChanged(object sender, EventArgs e)
         {
 
@@ -510,7 +520,7 @@ namespace DarkNotePad
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            txtBoxKryptonText.Paste();
+            txtBoxKryptonText.Text += (string)System.Windows.Clipboard.GetData("Text");
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -696,5 +706,7 @@ namespace DarkNotePad
                 get { return Color.FromArgb(30, 33, 32); }
             }
         }
+
+
     }
 }
