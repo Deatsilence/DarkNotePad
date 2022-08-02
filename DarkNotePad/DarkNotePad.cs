@@ -120,9 +120,8 @@ namespace DarkNotePad
             pictureBoxFind.Visible = false;
 
             // rich Textbox
-            txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(39, 39, 39);
-            txtBoxKryptonText.StateCommon.Border.Color1 = Color.FromArgb(39, 39, 39);
-            txtBoxKryptonText.StateCommon.Content.Color1 = Color.FromArgb(250, 252, 252);
+            txtBoxKryptonText.BackColor = Color.FromArgb(39, 39, 39);
+            txtBoxKryptonText.ForeColor = Color.FromArgb(250, 252, 252);
             txtBoxKryptonText.Text = string.Empty;
             defaultFont = txtBoxKryptonText.Font;
             txtBoxKryptonText.Text = strMyOriginalText;
@@ -242,14 +241,14 @@ namespace DarkNotePad
         {
             if (rjToggleBtnColor.Checked)
             {
-                txtBoxKryptonText.StateCommon.Back.Color1 = Color.WhiteSmoke;
-                txtBoxKryptonText.StateActive.Content.Color1 = Color.Black;
+                txtBoxKryptonText.BackColor = Color.WhiteSmoke;
+                txtBoxKryptonText.ForeColor= Color.Black;
                 txtBoxKryptonText.Focus();
             }
             else
             {
-                txtBoxKryptonText.StateCommon.Back.Color1 = Color.FromArgb(39, 39, 39);
-                txtBoxKryptonText.StateActive.Content.Color1 = Color.WhiteSmoke;
+                txtBoxKryptonText.BackColor = Color.FromArgb(39, 39, 39);
+                txtBoxKryptonText.ForeColor = Color.WhiteSmoke;
                 txtBoxKryptonText.Focus();
             }
         }
@@ -559,6 +558,8 @@ namespace DarkNotePad
         {
             txtBoxKryptonText.ZoomFactor = 0.9F;
             txtBoxKryptonText.ZoomFactor = 1F;
+            statusbarZoomState = 100;
+            toolStripStatusZoom.Text = "%" + statusbarZoomState;
         }
 
         private void findToolStripMenuItem_Click(object sender, EventArgs e)
