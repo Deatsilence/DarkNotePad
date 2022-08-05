@@ -21,27 +21,30 @@ namespace DarkNotePad
     public partial class NotePadPage : KryptonForm
     {
         // For the movement of the form
-        bool formMoving = false;
-        Point startPoint = new Point(0, 0);
-        // is equal ?
-        string strMyOriginalText;
-        DialogResult result;
-        // About
-        string path;
+        private bool formMoving = false;
+        private Point startPoint = new Point(0, 0);
+        private DialogResult result;
         // Modified
-        bool isChanged = true;
-        // Default font
-        Font defaultFont;
-        // Default zoom
-        float statusbarZoomState = 100;
+        private bool isChanged = true;
         // FindCounter
-        static bool findCounter = true;
+        private static bool findCounter = true;
         // isShowingStatusBar
-        static bool isShowingStatusBar = true;
+        private static bool isShowingStatusBar = true;
         // WordWrap
-        static bool isCheckecWordWrap = true;
+        private static bool isCheckecWordWrap = true;
+        // Replece State
+        private bool repleceState = true;
+        // Default font
+        private Font defaultFont;
+        // is equal ?
+        private string strMyOriginalText;
+        // About
+        private string path;
+        // Default zoom
+        private float statusbarZoomState = 100;
         // Open With
-        string[] openedPaths = Environment.GetCommandLineArgs();
+        private string[] openedPaths = Environment.GetCommandLineArgs();
+
         // TaskBar Icon Click
         const int WS_MINIMIZEBOX = 0x20000;
         const int CS_DBLCLKS = 0x8;
@@ -53,6 +56,11 @@ namespace DarkNotePad
             InitializeComponent();
             strMyOriginalText = txtBoxKryptonText.Text;
             this.menuStripNotePad.Renderer = new MyRenderer();
+            txtBoxKryptonFindText.GotFocus += txtBoxKryptonFindText_GotFocus;
+            txtBoxKryptonFindText.LostFocus += txtBoxKryptonFindText_LostFocus;
+            txtBoxKryptonNewText.GotFocus += txtBoxKryptonNewText_GotFocus;
+            txtBoxKryptonNewText.LostFocus += txtBoxKryptonNewText_LostFocus;
+
 
             if (openedPaths.Length > 1)
             {
@@ -66,6 +74,10 @@ namespace DarkNotePad
                 isChanged = true;
             }
         }
+
+
+
+
 
 
         /// <summary>
@@ -98,7 +110,7 @@ namespace DarkNotePad
         {
             // this
             this.MinimumSize = this.Size;
-            this.BackColor = Color.FromArgb(30, 33, 32);
+            this.BackColor = Color.FromArgb(25, 27, 28);
             this.Icon = Properties.Resources.darknotepadimgico;
 
             // Form Buttons
@@ -106,6 +118,8 @@ namespace DarkNotePad
             rjBtnClose.FlatAppearance.MouseDownBackColor = Color.FromArgb(196, 43, 28);
             rjBtnHide.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
             rjBtnMaximize.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
+            rjBtnReplece.FlatAppearance.MouseOverBackColor = Color.FromArgb(39, 39, 39);
+            rjBtnReplece.FlatAppearance.MouseDownBackColor = Color.FromArgb(39, 39, 39);
 
             // MessageBoxDialog
             MessageBoxManager.Yes = "Save";
@@ -116,8 +130,11 @@ namespace DarkNotePad
             // Labels
             lblIsThere.Visible = false;
 
-            // PictureBox
+            // PictureBox Find
             pictureBoxFind.Visible = false;
+
+            // PictureBox Change
+            rjBtnReplece.Visible = false;
 
             // rich Textbox
             txtBoxKryptonText.BackColor = Color.FromArgb(39, 39, 39);
@@ -133,10 +150,20 @@ namespace DarkNotePad
             txtBoxKryptonFindText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
             txtBoxKryptonFindText.StateCommon.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
             txtBoxKryptonFindText.StateCommon.Border.Rounding = 8;
-            txtBoxKryptonFindText.StateCommon.Border.Width = 1;
+            txtBoxKryptonFindText.StateCommon.Border.Width = 2;
             txtBoxKryptonFindText.StateCommon.Content.Color1 = Color.FromArgb(252, 250, 250);
             txtBoxKryptonFindText.StateCommon.Content.Padding = new Padding(10, 0, 10, 0);
             txtBoxKryptonFindText.Visible = false;
+
+            // New Textbox
+            txtBoxKryptonFindText.StateCommon.Back.Color1 = Color.FromArgb(52, 56, 55);
+            txtBoxKryptonFindText.StateCommon.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
+            txtBoxKryptonFindText.StateCommon.Border.Rounding = 8;
+            txtBoxKryptonFindText.StateCommon.Border.Width = 2;
+            txtBoxKryptonFindText.StateCommon.Content.Color1 = Color.FromArgb(252, 250, 250);
+            txtBoxKryptonFindText.StateCommon.Content.Padding = new Padding(10, 0, 10, 0);
+            txtBoxKryptonNewText.Visible = false;
+
 
             // Word Wrap
             txtBoxKryptonText.WordWrap = wordToolStripMenuItem.Checked;
@@ -162,14 +189,14 @@ namespace DarkNotePad
             foreach (ToolStripMenuItem menuItem in menuStripNotePad.Items)
             {
                 ((ToolStripDropDownMenu)menuItem.DropDown).ShowImageMargin = false;
-                menuItem.DropDown.BackColor = Color.FromArgb(30, 33, 32);
+                menuItem.DropDown.BackColor = Color.FromArgb(25, 27, 28);
                 menuItem.DropDown.ForeColor = Color.FromArgb(225, 225, 225);
-                menuItem.BackColor = Color.FromArgb(30, 33, 32);
+                menuItem.BackColor = Color.FromArgb(25, 27, 28);
 
                 foreach (ToolStripMenuItem item in menuItem.DropDownItems)
                 {
                     ((ToolStripDropDownMenu)item.DropDown).ShowImageMargin = false;
-                    item.DropDown.BackColor = Color.FromArgb(30, 33, 32);
+                    item.DropDown.BackColor = Color.FromArgb(25, 27, 28);
                     item.DropDown.ForeColor = Color.FromArgb(225, 225, 225);
                 }
             }
@@ -242,7 +269,7 @@ namespace DarkNotePad
             if (rjToggleBtnColor.Checked)
             {
                 txtBoxKryptonText.BackColor = Color.WhiteSmoke;
-                txtBoxKryptonText.ForeColor= Color.Black;
+                txtBoxKryptonText.ForeColor = Color.Black;
                 txtBoxKryptonText.Focus();
             }
             else
@@ -251,6 +278,13 @@ namespace DarkNotePad
                 txtBoxKryptonText.ForeColor = Color.WhiteSmoke;
                 txtBoxKryptonText.Focus();
             }
+        }
+        private void rjBtnReplece_Click(object sender, EventArgs e)
+        {
+            if (txtBoxKryptonText.Text != string.Empty && Convert.ToInt32(lblIsThere.Text) > 0)
+                txtBoxKryptonText.Text = txtBoxKryptonText.Text.Replace(txtBoxKryptonFindText.Text, txtBoxKryptonNewText.Text);
+            else
+                MessageBox.Show("Not found in text", "DarkNotePad", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -482,7 +516,7 @@ namespace DarkNotePad
 
             if (txtBoxKryptonFindText.Text != string.Empty)
             {
-                while (index < txtBoxKryptonText.Text.LastIndexOf(txtBoxKryptonFindText.Text))
+                while (index <= txtBoxKryptonText.Text.LastIndexOf(txtBoxKryptonFindText.Text))
                 {
                     // Searches the text in a RichTextBox control for a string within a range of text withing the control
                     txtBoxKryptonText.Find(txtBoxKryptonFindText.Text, index, txtBoxKryptonText.TextLength, RichTextBoxFinds.None);
@@ -499,6 +533,23 @@ namespace DarkNotePad
                 SummationFind = 0;
                 lblIsThere.Text = string.Format("{0}", SummationFind);
             }
+        }
+        private void txtBoxKryptonNewText_GotFocus(object sender, EventArgs e)
+        {
+            txtBoxKryptonNewText.StateActive.Border.Color1 = Color.FromArgb(5, 112, 147);
+        }
+        private void txtBoxKryptonNewText_LostFocus(object sender, EventArgs e)
+        {
+            txtBoxKryptonNewText.StateActive.Border.Color1 = Color.FromArgb(196, 43, 28);
+        }
+
+        private void txtBoxKryptonFindText_GotFocus(object sender, EventArgs e)
+        {
+            txtBoxKryptonFindText.StateActive.Border.Color1 = Color.FromArgb(5, 112, 147);
+        }
+        private void txtBoxKryptonFindText_LostFocus(object sender, EventArgs e)
+        {
+            txtBoxKryptonFindText.StateActive.Border.Color1 = Color.FromArgb(196, 43, 28);
         }
 
         private void reUndoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -531,7 +582,30 @@ namespace DarkNotePad
                 txtBoxKryptonText.SelectionStart = startCursorLocation;
             }
         }
+        private void repleceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (repleceState || pictureBoxFind.Visible == true)
+            {
+                repleceState = true;
+                rjBtnReplece.Visible = repleceState;
+                pictureBoxFind.Visible = !repleceState;
+                txtBoxKryptonNewText.Visible = repleceState;
+                txtBoxKryptonFindText.Visible = repleceState;
+                lblIsThere.Visible = repleceState;
+                repleceState = false;
+                //txtBoxKryptonText.Text = txtBoxKryptonText.Text.Replace(txtBoxKryptonFindText.Text, txtBoxKryptonNewText.Text);
+            }
+            else
+            {
+                rjBtnReplece.Visible = repleceState;
+                pictureBoxFind.Visible = repleceState;
+                txtBoxKryptonNewText.Visible = repleceState;
+                txtBoxKryptonFindText.Visible = repleceState;
+                lblIsThere.Visible = repleceState;
+                repleceState = true;
+            }
 
+        }
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             txtBoxKryptonText.SelectAll();
@@ -564,9 +638,12 @@ namespace DarkNotePad
 
         private void findToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (findCounter)
+            if (findCounter || txtBoxKryptonNewText.Visible == true)
             {
+                findCounter = true;
                 txtBoxKryptonFindText.Visible = findCounter;
+                txtBoxKryptonNewText.Visible = !findCounter;
+                rjBtnReplece.Visible = !findCounter;
                 pictureBoxFind.Visible = findCounter;
                 lblIsThere.Visible = findCounter;
                 findCounter = false;
@@ -574,6 +651,8 @@ namespace DarkNotePad
             else
             {
                 txtBoxKryptonFindText.Visible = findCounter;
+                txtBoxKryptonNewText.Visible = findCounter;
+                rjBtnReplece.Visible = findCounter;
                 pictureBoxFind.Visible = findCounter;
                 lblIsThere.Visible = findCounter;
                 findCounter = true;
@@ -688,26 +767,24 @@ namespace DarkNotePad
             }
             public override Color MenuBorder
             {
-                get { return Color.FromArgb(30, 33, 32); }
+                get { return Color.FromArgb(25, 27, 28); }
             }
             public override Color ImageMarginGradientBegin
             {
-                get { return Color.FromArgb(30, 33, 32); }
+                get { return Color.FromArgb(25, 27, 28); }
             }
             public override Color ImageMarginGradientEnd
             {
-                get { return Color.FromArgb(30, 33, 32); }
+                get { return Color.FromArgb(25, 27, 28); }
             }
             public override Color ImageMarginGradientMiddle
             {
-                get { return Color.FromArgb(30, 33, 32); }
+                get { return Color.FromArgb(25, 27, 28); }
             }
             public override Color MenuItemBorder
             {
-                get { return Color.FromArgb(30, 33, 32); }
+                get { return Color.FromArgb(25, 27, 28); }
             }
         }
-
-
     }
 }
