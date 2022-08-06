@@ -76,10 +76,6 @@ namespace DarkNotePad
         }
 
 
-
-
-
-
         /// <summary>
         /// Functions I Wrote 
         /// </summary>
@@ -571,6 +567,7 @@ namespace DarkNotePad
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             txtBoxKryptonText.Text += (string)System.Windows.Clipboard.GetData("Text");
+            txtBoxKryptonText.SelectionStart = txtBoxKryptonText.Text.Length;
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)

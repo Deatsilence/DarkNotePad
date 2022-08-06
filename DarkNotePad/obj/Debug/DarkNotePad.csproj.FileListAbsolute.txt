@@ -21,3 +21,7 @@ C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.csproj
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.exe
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.pdb
 C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.csproj.AssemblyReference.cache
+C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\bin\Debug\DarkNotePad.exe.manifest
+C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\bin\Debug\DarkNotePad.application
+C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.exe.manifest
+C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\obj\Debug\DarkNotePad.application
