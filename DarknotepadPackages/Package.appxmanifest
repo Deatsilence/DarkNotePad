@@ -12,8 +12,8 @@
     Version="1.0.0.0" />
 
   <Properties>
-    <DisplayName>DarknotepadPackages</DisplayName>
-    <PublisherDisplayName>mert_</PublisherDisplayName>
+    <DisplayName>Darknotepad</DisplayName>
+    <PublisherDisplayName>MMDream</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
@@ -31,8 +31,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="DarknotepadPackages"
-        Description="DarknotepadPackages"
+        DisplayName="Darknotepad"
+        Description="Custom-Darknotepad"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">
