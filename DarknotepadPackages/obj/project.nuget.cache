@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "XR8haBJTIFep4LP5kCSGNX9fkryI1OMU+lUVUdhwq/ebZKBWniC1bWS7ozwvTYQ9a/CpXfGbEq7n2iz4Z5ryEw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mert_\\source\\repos\\DarkNotePad\\DarknotepadPackages\\DarknotepadPackages.wapproj",
+  "expectedPackageFiles": [
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.19041.8\\microsoft.windows.sdk.buildtools.10.0.19041.8.nupkg.sha512"
+  ],
+  "logs": []
+}

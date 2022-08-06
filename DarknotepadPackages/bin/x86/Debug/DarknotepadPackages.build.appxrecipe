@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>CORVO</Machine>
+    <WindowsUser>mert_</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Debug|x86</SolutionConfiguration>
+    <PackageArchitecture>x86</PackageArchitecture>
+    <PackageIdentityName>0a83c467-5107-4043-8a74-73006351e0eb</PackageIdentityName>
+    <PackageIdentityPublisher>CN=mert_</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\mert_\source\repos\DarkNotePad\DarknotepadPackages\obj\x86\Debug\</IntermediateOutputPath>
+    <RemoteDeploymentType></RemoteDeploymentType>
+    <PackageRegistrationPath></PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath></WindowsSdkPath>
+    <LayoutDir>C:\Users\mert_\source\repos\DarkNotePad\DarknotepadPackages\bin\x86\Debug\AppX</LayoutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\mert_\source\repos\DarkNotePad\DarknotepadPackages\bin\x86\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\mert_\source\repos\DarkNotePad\DarknotepadPackages\Images\SplashScreen.scale-200.png">
+      <PackagePath>Images\SplashScreen.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\source\repos\DarkNotePad\DarknotepadPackages\Images\LockScreenLogo.scale-200.png">
+      <PackagePath>Images\LockScreenLogo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\source\repos\DarkNotePad\DarknotepadPackages\Images\Square150x150Logo.scale-200.png">
+      <PackagePath>Images\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\source\repos\DarkNotePad\DarknotepadPackages\Images\Square44x44Logo.scale-200.png">
+      <PackagePath>Images\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\source\repos\DarkNotePad\DarknotepadPackages\Images\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Images\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\source\repos\DarkNotePad\DarknotepadPackages\Images\StoreLogo.png">
+      <PackagePath>Images\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\source\repos\DarkNotePad\DarknotepadPackages\Images\Wide310x150Logo.scale-200.png">
+      <PackagePath>Images\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\source\repos\DarkNotePad\DarknotepadPackages\bin\x86\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\Desktop\Conpanents\Krypton-master\Bin\ComponentFactory.Krypton.Docking.dll">
+      <PackagePath>DarkNotePad\ComponentFactory.Krypton.Docking.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\Desktop\Conpanents\Krypton-master\Bin\ComponentFactory.Krypton.Navigator.dll">
+      <PackagePath>DarkNotePad\ComponentFactory.Krypton.Navigator.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\Desktop\Conpanents\Krypton-master\Bin\ComponentFactory.Krypton.Ribbon.dll">
+      <PackagePath>DarkNotePad\ComponentFactory.Krypton.Ribbon.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\Desktop\Conpanents\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll">
+      <PackagePath>DarkNotePad\ComponentFactory.Krypton.Toolkit.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\Desktop\Conpanents\Krypton-master\Bin\ComponentFactory.Krypton.Workspace.dll">
+      <PackagePath>DarkNotePad\ComponentFactory.Krypton.Workspace.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\Desktop\Conpanents\RJControls.dll">
+      <PackagePath>DarkNotePad\RJControls.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\darknotepadimg.ico">
+      <PackagePath>DarkNotePad\darknotepadimg.ico</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\bin\x86\Debug\DarkNotePad.exe">
+      <PackagePath>DarkNotePad\DarkNotePad.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\mert_\source\repos\DarkNotePad\DarkNotePad\bin\x86\Debug\DarkNotePad.exe.config">
+      <PackagePath>DarkNotePad\DarkNotePad.exe.config</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

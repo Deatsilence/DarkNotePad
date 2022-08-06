@@ -256,7 +256,7 @@ namespace DarkNotePad
             else
             {
                 this.WindowState = FormWindowState.Normal;
-                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
+                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
             }
         }
         private void rjBtnHide_Click(object sender, EventArgs e)

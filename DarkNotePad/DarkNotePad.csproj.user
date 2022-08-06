@@ -4,8 +4,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <PropertyGroup>
-    <PublishUrlHistory>publish\</PublishUrlHistory>
-    <InstallUrlHistory />
+    <PublishUrlHistory>C:\Users\mert_\source\repos\DarkNotePad\DarknotepadPackages\bin\x86\Debug\AppX\DarkNotePad\|C:\Users\mert_\source\repos\DarkNotePad\Custom-NotePad\Debug\|publish\</PublishUrlHistory>
+    <InstallUrlHistory>https://drive.google.com/file/d/1UtRlvD7tE2rsVMfA2feu9z-sPWsS7_2H/view%3fusp=sharing/</InstallUrlHistory>
     <SupportUrlHistory />
     <UpdateUrlHistory />
     <BootstrapperUrlHistory />
