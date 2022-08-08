@@ -144,6 +144,8 @@
       <DependentUpon>DarkNotePad.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxManager.cs" />
+    <Compile Include="MyColors.cs" />
+    <Compile Include="MyRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="About.resx">

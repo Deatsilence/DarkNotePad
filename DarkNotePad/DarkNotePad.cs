@@ -44,7 +44,6 @@ namespace DarkNotePad
         private float statusbarZoomState = 100;
         // Open With
         private string[] openedPaths = Environment.GetCommandLineArgs();
-
         // TaskBar Icon Click
         const int WS_MINIMIZEBOX = 0x20000;
         const int CS_DBLCLKS = 0x8;
@@ -60,7 +59,6 @@ namespace DarkNotePad
             txtBoxKryptonFindText.LostFocus += txtBoxKryptonFindText_LostFocus;
             txtBoxKryptonNewText.GotFocus += txtBoxKryptonNewText_GotFocus;
             txtBoxKryptonNewText.LostFocus += txtBoxKryptonNewText_LostFocus;
-
 
             if (openedPaths.Length > 1)
             {
@@ -703,28 +701,6 @@ namespace DarkNotePad
             txtBoxKryptonText.ZoomFactor -= 0.1F;
         }
 
-        // For MenuStrip Properties
-        private class MyRenderer : ToolStripProfessionalRenderer
-        {
-            public MyRenderer() : base(new MyColors()) { }
-            protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
-            {
-                var tsMenuItem = e.Item as ToolStripMenuItem;
-                if (tsMenuItem != null)
-                    e.ArrowColor = Color.White;
-                base.OnRenderArrow(e);
-            }
-            protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs e)
-            {
-                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                var r = new Rectangle(e.ImageRectangle.Location, e.ImageRectangle.Size);
-                r.Inflate(-4, -6);
-                e.Graphics.DrawLines(Pens.White, new Point[]{
-                    new Point(r.Left, r.Bottom - r.Height /2),
-                    new Point(r.Left + r.Width /3,  r.Bottom),
-                    new Point(r.Right, r.Top)});
-            }
-        }
         protected override CreateParams CreateParams
         {
             get
@@ -733,54 +709,6 @@ namespace DarkNotePad
                 cp.Style |= WS_MINIMIZEBOX;
                 cp.ClassStyle |= CS_DBLCLKS;
                 return cp;
-            }
-        }
-        private class MyColors : ProfessionalColorTable
-        {
-            public MyColors()
-            {
-                base.UseSystemColors = false;
-            }
-            public override Color MenuItemSelected
-            {
-                // when the menu is selected
-                get { return Color.FromArgb(52, 56, 55); }
-            }
-            public override Color MenuItemSelectedGradientBegin
-            {
-                get { return Color.FromArgb(52, 56, 55); }
-            }
-            public override Color MenuItemSelectedGradientEnd
-            {
-                get { return Color.FromArgb(52, 56, 55); }
-            }
-            public override Color MenuItemPressedGradientBegin
-            {
-                get { return Color.FromArgb(52, 56, 55); }
-            }
-            public override Color MenuItemPressedGradientEnd
-            {
-                get { return Color.FromArgb(52, 56, 55); }
-            }
-            public override Color MenuBorder
-            {
-                get { return Color.FromArgb(25, 27, 28); }
-            }
-            public override Color ImageMarginGradientBegin
-            {
-                get { return Color.FromArgb(25, 27, 28); }
-            }
-            public override Color ImageMarginGradientEnd
-            {
-                get { return Color.FromArgb(25, 27, 28); }
-            }
-            public override Color ImageMarginGradientMiddle
-            {
-                get { return Color.FromArgb(25, 27, 28); }
-            }
-            public override Color MenuItemBorder
-            {
-                get { return Color.FromArgb(25, 27, 28); }
             }
         }
     }
